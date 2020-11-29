@@ -34,6 +34,23 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
 
+  // Modules (https://go.nuxtjs.dev/config-modules)
+  modules: [
+    '@nuxtjs/apollo',
+  ],
+
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'https://drinqs.de',
+  },
+  privateRuntimeConfig: {
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: '~/apollo/default-config.js',
+    },
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   },
