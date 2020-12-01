@@ -1,4 +1,4 @@
-# Drinqs
+# Drinqs-Frontend
 
 ## Build Setup
 
