@@ -22,6 +22,7 @@
     "@nuxtjs/storybook": "^3.2.0",
     "@nuxtjs/tailwindcss": "^3.1.0",
     "@storybook/addon-essentials": "^6.1.9",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
