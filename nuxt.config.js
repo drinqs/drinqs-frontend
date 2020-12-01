@@ -34,6 +34,21 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
 
+  storybook: {
+    stories: [
+      '~/stories/**/*.stories.js',
+    ],
+    addons: [
+      {
+        name: '@storybook/addon-essentials',
+        options: {
+          actions: false,
+          toolbars: false,
+        },
+      },
+    ],
+  },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/apollo',
