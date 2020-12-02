@@ -22,10 +22,12 @@ export const DefaultModal = () => ({
       </template>
 
       <template #modal-footer>
-        <span class="flex w-full rounded-md sm:ml-3 sm:w-auto justify-center">
-          <button class="button-green">Save</button>
-          <button class="button-gray">Cancel</button>
-        </span>
+        <button class="button-green w-full inline-flex justify-center sm:ml-3 sm:w-auto sm:text-sm">Save</button>
+        <button
+          class="button-gray-outlined mt-3 w-full inline-flex justify-center sm:ml-3 sm:w-auto sm:text-sm sm:mt-0"
+        >
+          Cancel
+        </button>
       </template>
     </BaseModal>
   `,
@@ -42,8 +44,10 @@ export const ModalWithIcon = () => ({
         <strong>Delete Stuff</strong>
       </template>
 
-      <template #modal-icon>
-        <Exclamation class="h-6 w-6 text-red-600" />
+      <template #icon>
+        <div class="h-full w-full rounded-full bg-red-100 inline-flex items-center justify-center">
+          <Exclamation class="h-6 w-6 text-red-600" />
+        </div>
       </template>
 
       <template #modal-content>
@@ -52,10 +56,12 @@ export const ModalWithIcon = () => ({
       </template>
 
       <template #modal-footer>
-        <span class="flex w-full rounded-md sm:ml-3 sm:w-auto justify-center">
-          <button class="button-red">Delete</button>
-          <button class="button-gray">Cancel</button>
-        </span>
+        <button class="button-red w-full inline-flex justify-center sm:ml-3 sm:w-auto sm:text-sm">Delete</button>
+        <button
+          class="button-gray-outlined mt-3 w-full inline-flex justify-center sm:ml-3 sm:w-auto sm:text-sm sm:mt-0"
+        >
+          Cancel
+        </button>
       </template>
     </BaseModal>
   `,

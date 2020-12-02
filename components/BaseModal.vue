@@ -43,9 +43,8 @@
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
               <div
-                v-if="$slots.icon && Object.keys($slots.icon).length > 0"
-                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100
-                  sm:mx-0 sm:h-10 sm:w-10"
+                v-if="$slots.icon"
+                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 sm:mx-0 sm:h-10 sm:w-10"
               >
                 <slot name="icon" />
               </div>
@@ -59,7 +58,7 @@
             </div>
           </div>
 
-          <div class="bg-gray-300 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
             <slot name="modal-footer" />
           </div>
         </div>
