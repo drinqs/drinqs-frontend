@@ -14,6 +14,12 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    colors: {
+      ...require('tailwindcss/colors'),
+      'light-purple': 'rgb(179, 171, 188)',
+      'medium-purple': 'rgb(104, 88, 121)',
+      'dark-purple': 'rgb(43, 30, 112)',
+    },
     extend: {},
   },
   variants: {
