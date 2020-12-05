@@ -14,6 +14,9 @@ module.exports = {
   ],
   plugins: [
   ],
+  settings: {
+    'import/resolver': 'nuxt',
+  },
   // add your custom rules here
   rules: {
     'max-len': ['error', { code: 120 }],

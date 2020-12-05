@@ -17,10 +17,12 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '~/assets/stylesheets/app.scss',
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    { src: '@/plugins/notification-plugin', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -33,6 +35,21 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
+
+  storybook: {
+    stories: [
+      '~/stories/**/*.stories.js',
+    ],
+    addons: [
+      {
+        name: '@storybook/addon-essentials',
+        options: {
+          actions: false,
+          toolbars: false,
+        },
+      },
+    ],
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
