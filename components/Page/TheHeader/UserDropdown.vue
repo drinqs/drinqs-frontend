@@ -8,8 +8,9 @@
       <div>
         <button
           id="user-menu"
-          class="bg-dark-purple flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2
-            focus:ring-offset-dark-purple focus:ring-white"
+          type="button"
+          class="bg-secondary flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2
+            focus:ring-offset-secondary focus:ring-white"
           aria-haspopup="true"
           @click="showUserDropdown = !showUserDropdown"
         >
@@ -29,7 +30,7 @@
         <div
           v-show="showUserDropdown"
           class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black
-            ring-opacity-5"
+            ring-opacity-5 z-50"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="user-menu"
