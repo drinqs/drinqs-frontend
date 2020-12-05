@@ -19,7 +19,7 @@ module.exports = {
   },
   // add your custom rules here
   rules: {
-    'max-len': ['error', { code: 120 }],
+    'max-len': ['error', { code: 120, ignoreRegExpLiterals: true, ignoreUrls: true }],
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
   },
 };
