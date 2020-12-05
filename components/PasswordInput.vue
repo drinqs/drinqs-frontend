@@ -7,7 +7,7 @@
     :type="type"
     :icon="icon"
     :clickable-icon="true"
-    placeholder="********"
+    placeholder="••••••••"
     @input="onInput"
     @icon-click="onIconClick"
   />
