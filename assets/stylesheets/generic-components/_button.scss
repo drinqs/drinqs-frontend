@@ -6,6 +6,42 @@
   @apply outline-none;
 }
 
+.button-primary {
+  @extend .button;
+  @apply bg-primary text-white;
+}
+
+.button-primary:hover {
+  @apply bg-primary-dark;
+}
+
+.button-primary-outlined {
+  @extend .button;
+  @apply bg-white text-primary border border-primary;
+}
+
+.button-primary-outlined:hover {
+  @apply text-white bg-primary;
+}
+
+.button-secondary {
+  @extend .button;
+  @apply bg-secondary text-white;
+}
+
+.button-secondary:hover {
+  @apply bg-secondary-dark;
+}
+
+.button-secondary-outlined {
+  @extend .button;
+  @apply bg-white text-secondary border border-secondary;
+}
+
+.button-secondary-outlined:hover {
+  @apply text-white bg-secondary;
+}
+
 .button-red {
   @extend .button;
   @apply bg-red-600 text-white;
@@ -57,5 +93,5 @@
 }
 
 .button-gray-outlined:hover {
-  @apply bg-gray-50;
+  @apply bg-gray-100;
 }
