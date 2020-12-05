@@ -8,7 +8,7 @@
             type="button"
             class="inline-flex items-center justify-center p-2 rounded-md text-secondary
               hover:text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset
-              focus:ring-white"
+              focus:ring-secondary"
             :aria-expanded="showMobileMenu"
             @click="showMobileMenu = !showMobileMenu"
           >
