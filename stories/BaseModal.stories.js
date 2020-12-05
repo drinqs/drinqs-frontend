@@ -1,5 +1,5 @@
 import BaseModal from '@/components/BaseModal.vue';
-import Exclamation from '@/components/SvgIcons/Exclamation.vue';
+import Exclamation from '@/components/global/SvgIcons/Exclamation.vue';
 
 export default {
   title: 'BaseModal',
