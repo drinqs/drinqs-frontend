@@ -21,7 +21,7 @@
           <div class="flex-shrink-0 flex items-center">
             <img
               class="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+              src="~/assets/images/logo.svg"
               alt="Drinqs"
             >
           </div>
