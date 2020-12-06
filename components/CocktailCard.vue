@@ -31,8 +31,9 @@
 
           <button
             type="button"
-            class="cursor-pointer text-gray-600 hover:text-gray-700 inline-flex items-center justify-center"
-            @click.prevent.stop="onFavoriteClick"
+            class="cursor-pointer text-gray-600 hover:text-gray-700 inline-flex items-center justify-center
+              focus:outline-none"
+            @click.prevent.stop="onShare"
           >
             <span class="sr-only">Share via URL</span>
             <Share class="h-6 w-6" />
@@ -64,6 +65,13 @@
         </button>
       </div>
     </div>
+
+    <ShareModal
+      v-show="showShareModal"
+      :show="showShareModal"
+      :cocktail="cocktail"
+      @close="showShareModal = false"
+    />
   </div>
 </template>
 
@@ -80,6 +88,7 @@ export default {
     return {
       // TODO
       isFavorite: false,
+      showShareModal: false,
     };
   },
   computed: {
@@ -93,7 +102,7 @@ export default {
       this.isFavorite = !this.isFavorite;
     },
     onShare() {
-      // TODO: show modal with link to be copied?
+      this.showShareModal = true;
     },
     onAccept() {
       this.$emit('accept', this.cocktail);
