@@ -1,0 +1,93 @@
+<template>
+  <div>
+    <div class="shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer">
+      <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
+        <img
+          :src="cocktail.imageSrc"
+          :alt="cocktail.name"
+          class="max-h-full h-full w-full min-w-full rounded-md object-cover"
+        >
+      </div>
+
+      <div class="cocktail-info w-full h-full p-2 xs:max-w-full overflow-hidden">
+        <div class="flex items-center mb-3">
+          <span class="font-bold text-base xs:text-lg text-secondary">{{ cocktail.name }}</span>
+          <Drink v-if="cocktail.alcoholic" class="h-4 w-4 xxs:w-6 xxs:h-6" />
+        </div>
+
+        <div class="text-base truncate text-secondary mb-3">
+          {{ ingredientsList }}
+        </div>
+
+        <div class="flex items-center absolute bottom-0 right-0 mb-3 mr-3">
+          <button
+            type="button"
+            class="cursor-pointer text-red-500 hover:text-red-600 mr-8 inline-flex items-center justify-center
+              focus:outline-none"
+            @click.prevent.stop="onFavoriteClick"
+          >
+            <span class="sr-only">Mark as favorite</span>
+            <HeartSolid v-if="isFavorite" class="w-6 h-6" />
+            <Heart v-else class="w-6 h-6" />
+          </button>
+
+          <button
+            type="button"
+            class="cursor-pointer text-gray-600 hover:text-gray-700 inline-flex items-center justify-center
+              focus:outline-none"
+            @click.prevent.stop="onShare"
+          >
+            <span class="sr-only">Share via URL</span>
+            <Share class="h-6 w-6" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ShareModal
+      v-show="showShareModal"
+      :show="showShareModal"
+      :cocktail="cocktail"
+      @close="showShareModal = false"
+    />
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'CocktailTile',
+  props: {
+    cocktail: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      // TODO
+      isFavorite: false,
+      showShareModal: false,
+    };
+  },
+  computed: {
+    ingredientsList() {
+      return this.cocktail.ingredients.map((ingredient) => ingredient.name).join(', ');
+    },
+  },
+  methods: {
+    onFavoriteClick() {
+      // TODO: VueX Store action?
+      this.isFavorite = !this.isFavorite;
+    },
+    onShare() {
+      this.showShareModal = true;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.cocktail-info {
+  max-width: calc(95vw - 7rem);
+}
+</style>

@@ -21,3 +21,8 @@ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Storybook
+
+This project uses Storybook.
+To run the storybook local server, run `yarn nuxt storybook`.

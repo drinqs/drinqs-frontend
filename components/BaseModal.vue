@@ -1,6 +1,6 @@
 <template>
   <div class="fixed z-10 inset-0 overflow-y-auto">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <transition
         enter-active-class="transition-opacity ease-out duration-300"
         enter-class="opacity-0"
@@ -19,7 +19,7 @@
       </transition>
 
       <!-- This element is to trick the browser into centering the modal contents. -->
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" />&#8203;
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
 
       <transition
         enter-active-class="transition-all ease-out duration-300"
@@ -48,7 +48,7 @@
               >
                 <slot name="icon" />
               </div>
-              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <div :class="headlineContainerCssClasses">
                 <slot name="modal-headline" />
 
                 <div class="mt-2">
@@ -74,6 +74,14 @@ export default {
     show: {
       type: Boolean,
       required: true,
+    },
+  },
+  computed: {
+    headlineContainerCssClasses() {
+      return [
+        'w-full', 'text-center', 'sm:mt-0', 'sm:text-left',
+        { 'sm:ml-4': this.$slots.icon, 'mt-3': this.$slots.icon },
+      ];
     },
   },
   watch: {
