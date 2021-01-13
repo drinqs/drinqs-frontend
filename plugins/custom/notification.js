@@ -8,11 +8,9 @@ const NotificationPlugin = {
       open(message, options = {}) {
         this.closeAll();
 
-        const propsData = {
-          ...globalOptions,
-          ...options,
-          message,
-        };
+        const propsData = typeof message === 'object'
+          ? { ...globalOptions, ...options, ...message }
+          : { ...globalOptions, ...options, message };
 
         const element = document.createElement('div');
         document.querySelector('body').appendChild(element);
