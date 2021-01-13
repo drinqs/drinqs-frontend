@@ -6,12 +6,16 @@
   @apply outline-none;
 }
 
+.button:disabled {
+  @apply opacity-50;
+}
+
 .button-primary {
   @extend .button;
   @apply bg-primary text-white;
 }
 
-.button-primary:hover {
+.button-primary:hover:enabled {
   @apply bg-primary-dark;
 }
 
@@ -20,8 +24,12 @@
   @apply bg-white text-primary border border-primary;
 }
 
-.button-primary-outlined:hover {
+.button-primary-outlined:hover:enabled {
   @apply text-white bg-primary;
+}
+
+.button-primary-outlined:disabled {
+  @apply bg-gray-50;
 }
 
 .button-secondary {
@@ -29,7 +37,7 @@
   @apply bg-secondary text-white;
 }
 
-.button-secondary:hover {
+.button-secondary:hover:enabled {
   @apply bg-secondary-dark;
 }
 
@@ -38,8 +46,12 @@
   @apply bg-white text-secondary border border-secondary;
 }
 
-.button-secondary-outlined:hover {
+.button-secondary-outlined:hover:enabled {
   @apply text-white bg-secondary;
+}
+
+.button-secondary-outlined:disabled {
+  @apply bg-gray-50;
 }
 
 .button-red {
@@ -47,7 +59,7 @@
   @apply bg-red-600 text-white;
 }
 
-.button-red:hover {
+.button-red:hover:enabled {
   @apply bg-red-700;
 }
 
@@ -56,8 +68,12 @@
   @apply bg-white text-red-600 border border-red-600;
 }
 
-.button-red-outlined:hover {
+.button-red-outlined:hover:enabled {
   @apply text-white bg-red-600;
+}
+
+.button-red-outlined:disabled {
+  @apply bg-gray-50;
 }
 
 .button-green {
@@ -65,7 +81,7 @@
   @apply bg-green-600 text-white;
 }
 
-.button-green:hover {
+.button-green:hover:enabled {
   @apply bg-green-700;
 }
 
@@ -74,8 +90,12 @@
   @apply bg-white text-green-600 border border-green-600;
 }
 
-.button-green-outlined:hover {
+.button-green-outlined:hover:enabled {
   @apply text-white bg-green-600;
+}
+
+.button-green-outlined:disabled {
+  @apply bg-gray-50;
 }
 
 .button-gray {
@@ -83,7 +103,7 @@
   @apply bg-gray-600 text-white;
 }
 
-.button-gray:hover {
+.button-gray:hover:enabled {
   @apply bg-gray-700 text-white;
 }
 
@@ -92,6 +112,6 @@
   @apply text-gray-700 bg-white border border-gray-300;
 }
 
-.button-gray-outlined:hover {
+.button-gray-outlined:hover:enabled {
   @apply bg-gray-100;
 }
