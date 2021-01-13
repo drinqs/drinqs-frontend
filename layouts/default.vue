@@ -5,6 +5,35 @@
   </div>
 </template>
 
+<script>
+import { get } from 'vuex-pathify';
+import { mapActions } from 'vuex';
+
+export default {
+  computed: {
+    flashMessage: get('flash/flashMessage'),
+  },
+  watch: {
+    $route() {
+      this.showFlashMessage();
+    },
+  },
+  mounted() {
+    this.showFlashMessage();
+  },
+  methods: {
+    ...mapActions('flash', ['consumeFlashMessage']),
+
+    showFlashMessage() {
+      if (this.flashMessage) {
+        this.$notification.open(this.flashMessage);
+        this.consumeFlashMessage();
+      }
+    },
+  },
+};
+</script>
+
 <style>
 html {
   font-family:
