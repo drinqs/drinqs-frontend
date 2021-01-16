@@ -20,6 +20,24 @@
       </div>
 
       <div class="field">
+        <BaseInput
+          id="first-name"
+          :value="userData.firstName"
+          label="First Name"
+          @input="updateUserData('firstName', $event)"
+        />
+      </div>
+
+      <div class="field">
+        <BaseInput
+          id="last-name"
+          :value="userData.lastName"
+          label="Last Name"
+          @input="updateUserData('lastName', $event)"
+        />
+      </div>
+
+      <div class="field">
         <PasswordInput
           id="password"
           :value="userData.password"
