@@ -34,6 +34,7 @@ export default {
   plugins: [
     { src: '@/plugins/notification-plugin', mode: 'client' },
     { src: '@/plugins/vue-clipboard', mode: 'client' },
+    { src: '@/plugins/vuelidate' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
