@@ -36,7 +36,8 @@
               >
                 <a
                   :class="navLinkCsscLasses(isActive)"
-                  @click="navigate"
+                  href
+                  @click.prevent="navigate"
                 >
                   {{ link.text }}
                 </a>
@@ -67,7 +68,8 @@
         >
           <a
             :class="mobileNavLinkCssClasses(isActive)"
-            @click="navigate"
+            href
+            @click.prevent="navigate"
           >
             {{ link.text }}
           </a>
