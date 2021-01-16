@@ -17,7 +17,6 @@
 
       <NuxtLink
         to="/register"
-        role="button"
         class="button button-secondary w-full inline-flex justify-center mt-2"
       >
         Register

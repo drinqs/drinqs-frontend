@@ -26,7 +26,7 @@
           type="submit"
           class="button button-primary w-full inline-flex items-center justify-center"
         >
-          <Spinner v-show="loading" class="animate-spin -ml-8 mr-3 h-5 w-5" />
+          <Spinner v-show="loading" class="-ml-8 mr-3 h-5 w-5" />
           Login
         </button>
 
@@ -35,13 +35,12 @@
           type="submit"
           class="button button-primary w-full inline-flex items-center justify-center mb-2"
         >
-          <Spinner v-show="loading" class="animate-spin -ml-8 mr-3 h-5 w-5" />
+          <Spinner v-show="loading" class="-ml-8 mr-3 h-5 w-5" />
           Login
         </button>
 
         <NuxtLink
           to="/forgot-password"
-          role="button"
           class="button button-secondary-outlined w-full inline-flex justify-center"
         >
           Forgot Password?

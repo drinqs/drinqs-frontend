@@ -43,7 +43,7 @@
           type="submit"
           class="button button-primary w-full inline-flex items-center justify-center mb-2"
         >
-          <Spinner v-show="loading" class="animate-spin -ml-8 mr-3 h-5 w-5" />
+          <Spinner v-show="loading" class="-ml-8 mr-3 h-5 w-5" />
           Register
         </button>
       </div>
