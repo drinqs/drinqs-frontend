@@ -88,6 +88,43 @@ export default {
     },
   },
 
+  auth: {
+    strategies: {
+      local: false,
+
+      apollo: {
+        scheme: '~/schemes/apollo.js',
+        name: 'apollo',
+        provider: 'apollo',
+
+        token: {
+          required: true,
+          property: 'token',
+          type: 'JWT',
+          maxAge: 300,
+        },
+        refreshToken: {
+          property: 'refreshToken',
+          maxAge: 60 * 60 * 24 * 7,
+          required: true,
+          tokenRequired: true,
+        },
+        autoLogout: false,
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/start',
+    },
+  },
+
+  router: {
+    middleware: [
+      'auth',
+    ],
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     routes() {
