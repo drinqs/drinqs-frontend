@@ -62,7 +62,7 @@
       <div class="px-2 pt-2 pb-3 space-y-1">
         <NuxtLink
           v-for="link in navLinks"
-          :key="link.text"
+          :key="`mobile-${link.text}`"
           v-slot="{ navigate, isActive }"
           :to="link.to"
         >
