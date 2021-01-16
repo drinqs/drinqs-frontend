@@ -121,6 +121,7 @@ export default {
 
   router: {
     middleware: [
+      'logged-in-state',
       'auth',
     ],
   },
