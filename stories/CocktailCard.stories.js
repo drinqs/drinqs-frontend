@@ -1,4 +1,4 @@
-import CocktailCard from '@/components/CocktailCard.vue';
+import CocktailCard from '@/components/Cocktail/CocktailCard.vue';
 
 export default {
   title: 'Cocktail Card',

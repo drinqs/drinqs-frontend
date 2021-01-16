@@ -1,4 +1,4 @@
-import CocktailTile from '@/components/CocktailTile.vue';
+import CocktailTile from '@/components/Cocktail/CocktailTile.vue';
 
 export default {
   title: 'Cocktail Tile',
