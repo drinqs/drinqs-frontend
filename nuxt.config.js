@@ -72,6 +72,7 @@ export default {
 
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'https://drinqs.de',
+    graphQLEndpoint: process.env.GQL_ENDPOINT || 'https://app.drinqs.de/graphql',
   },
   privateRuntimeConfig: {
   },
