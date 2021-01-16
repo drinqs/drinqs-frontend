@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import ClickOutside from 'vue-click-outside';
 
 export default {
@@ -70,6 +71,17 @@ export default {
     };
   },
   methods: {
+    ...mapActions('flash', ['setFlashMessage']),
+
+    async onLogout() {
+      await this.$auth.logout();
+
+      this.setFlashMessage({
+        type: 'success',
+        message: 'Logged out successfully',
+      });
+    },
+
     hideUserDropdown() {
       this.showUserDropdown = false;
     },
