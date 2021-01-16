@@ -81,6 +81,11 @@ export default {
     clientConfigs: {
       default: '~/apollo/default-config.js',
     },
+    authenticationType: 'JWT',
+    cookieAttributes: {
+      // expiration in days
+      expires: 7,
+    },
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
