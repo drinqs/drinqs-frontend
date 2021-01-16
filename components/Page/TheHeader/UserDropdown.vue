@@ -29,12 +29,22 @@
       >
         <div
           v-show="showUserDropdown"
-          class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black
+          class="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg py-1 bg-white ring-1 ring-black min-w-48
             ring-opacity-5 z-50"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="user-menu"
         >
+          <div class="block px-4 py-2 pb-3 border-b border-gray-300 text-sm w-max mb-1">
+            <span>Signed in as</span>
+            <span
+              v-if="$auth.user"
+              class="font-bold text-secondary"
+            >
+              {{ $auth.user.username }}
+            </span>
+          </div>
+
           <NuxtLink
             to="/profile"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
