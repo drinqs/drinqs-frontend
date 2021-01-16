@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     'max-len': ['error', { code: 120, ignoreRegExpLiterals: true, ignoreUrls: true }],
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'object-curly-newline': 'off',
   },
 };
