@@ -36,14 +36,20 @@
           aria-labelledby="user-menu"
         >
           <NuxtLink
-            v-for="link in userLinks"
-            :key="`user-${link.text}`"
-            :to="link.to"
+            to="/profile"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             role="menuitem"
           >
-            {{ link.text }}
+            Your Profile
           </NuxtLink>
+
+          <a
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+            role="menuitem"
+            @click="onLogout"
+          >
+            Logout
+          </a>
         </div>
       </transition>
     </div>
@@ -61,21 +67,6 @@ export default {
   data() {
     return {
       showUserDropdown: false,
-
-      userLinks: [
-        {
-          to: '/profile',
-          text: 'Your Profile',
-        },
-        {
-          to: '/settings',
-          text: 'Settings',
-        },
-        {
-          to: '/logout',
-          text: 'Logout',
-        },
-      ],
     };
   },
   methods: {
