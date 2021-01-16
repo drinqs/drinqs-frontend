@@ -45,7 +45,14 @@
           </div>
         </div>
 
-        <UserDropdown />
+        <UserDropdown v-show="loggedIn" />
+        <NuxtLink
+          v-show="!loggedIn"
+          to="/login"
+          class="font-semibold no-underline hover:underline text-secondary"
+        >
+          Login
+        </NuxtLink>
       </div>
     </div>
 
@@ -71,6 +78,8 @@
 </template>
 
 <script>
+import { get } from 'vuex-pathify';
+
 export default {
   name: 'TheHeader',
   data() {
@@ -96,6 +105,9 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    loggedIn: get('auth/loggedIn'),
   },
   methods: {
     navLinkCsscLasses(isActive) {
