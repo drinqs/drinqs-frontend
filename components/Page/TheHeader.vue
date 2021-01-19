@@ -50,7 +50,7 @@
         <NuxtLink
           v-show="!loggedIn"
           to="/login"
-          class="font-semibold no-underline hover:underline text-secondary"
+          class="font-semibold no-underline hover:underline text-secondary p-2"
         >
           Login
         </NuxtLink>

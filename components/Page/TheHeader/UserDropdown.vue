@@ -35,7 +35,7 @@
           aria-orientation="vertical"
           aria-labelledby="user-menu"
         >
-          <div class="block px-4 py-2 pb-3 border-b border-gray-300 text-sm w-max mb-1">
+          <div class="inline-block w-full px-4 py-2 pb-3 border-b border-gray-300 text-sm mb-1 whitespace-nowrap">
             <span>Signed in as</span>
             <span
               v-if="$auth.user"
