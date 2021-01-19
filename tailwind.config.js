@@ -19,6 +19,7 @@ module.exports = {
       primary: 'rgb(255, 39, 115)',
       'primary-dark': 'rgb(250, 8, 93)',
       secondary: 'rgb(43, 30, 112)',
+      'secondary-seethrough': 'rgba(43, 30, 112, 0.2)',
       'secondary-lighter': 'rgb(104, 88, 121)',
       'secondary-light': 'rgb(179, 171, 188)',
       'secondary-dark': 'rgb(34, 25, 82)',
