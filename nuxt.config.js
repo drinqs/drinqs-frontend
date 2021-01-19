@@ -34,6 +34,7 @@ export default {
   plugins: [
     { src: '@/plugins/notification-plugin', mode: 'client' },
     { src: '@/plugins/vue-clipboard', mode: 'client' },
+    { src: '@/plugins/vuelidate' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -66,10 +67,13 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/apollo',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
 
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'https://drinqs.de',
+    graphQLEndpoint: process.env.GQL_ENDPOINT || 'https://app.drinqs.de/graphql',
   },
   privateRuntimeConfig: {
   },
@@ -78,10 +82,59 @@ export default {
     clientConfigs: {
       default: '~/apollo/default-config.js',
     },
+    authenticationType: 'JWT',
+    cookieAttributes: {
+      // expiration in days
+      expires: 7,
+    },
+  },
+
+  auth: {
+    strategies: {
+      local: false,
+
+      apollo: {
+        scheme: '~/schemes/apollo.js',
+        name: 'apollo',
+        provider: 'apollo',
+
+        token: {
+          required: true,
+          property: 'token',
+          type: 'JWT',
+          maxAge: 300,
+        },
+        refreshToken: {
+          property: 'refreshToken',
+          maxAge: 60 * 60 * 24 * 7,
+          required: true,
+          tokenRequired: true,
+        },
+        autoLogout: false,
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/start',
+    },
+  },
+
+  router: {
+    middleware: [
+      'logged-in-state',
+      'auth',
+    ],
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    babel: {
+      plugins: [
+        '@babel/plugin-proposal-optional-chaining',
+      ],
+    },
+
     routes() {
       return [
         '/',

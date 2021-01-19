@@ -1,4 +1,4 @@
-export default (_context) => ({
-  httpEndpoint: process.env.GQL_ENDPOINT,
-  browserHttpEndpoint: '/graphql',
+export default ({ $config: { graphQLEndpoint } }) => ({
+  httpEndpoint: graphQLEndpoint,
+  browserHttpEndpoint: graphQLEndpoint,
 });

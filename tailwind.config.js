@@ -31,10 +31,12 @@ module.exports = {
       minWidth: {
         28: '7rem',
         32: '8rem',
+        48: '12rem',
       },
       maxWidth: {
         28: '7rem',
         32: '8rem',
+        48: '12rem',
       },
       boxShadow: {
         'underline-primary': '0 3px 0 rgb(255, 39, 115)',

@@ -1,7 +1,9 @@
 <template>
   <div>
     <TheHeader />
-    <Nuxt />
+    <div class="container mx-auto p-4">
+      <Nuxt />
+    </div>
   </div>
 </template>
 

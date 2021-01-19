@@ -36,7 +36,8 @@
               >
                 <a
                   :class="navLinkCsscLasses(isActive)"
-                  @click="navigate"
+                  href
+                  @click.prevent="navigate"
                 >
                   {{ link.text }}
                 </a>
@@ -45,7 +46,14 @@
           </div>
         </div>
 
-        <UserDropdown />
+        <UserDropdown v-show="loggedIn" />
+        <NuxtLink
+          v-show="!loggedIn"
+          to="/login"
+          class="font-semibold no-underline hover:underline text-secondary p-2"
+        >
+          Login
+        </NuxtLink>
       </div>
     </div>
 
@@ -54,13 +62,14 @@
       <div class="px-2 pt-2 pb-3 space-y-1">
         <NuxtLink
           v-for="link in navLinks"
-          :key="link.text"
+          :key="`mobile-${link.text}`"
           v-slot="{ navigate, isActive }"
           :to="link.to"
         >
           <a
             :class="mobileNavLinkCssClasses(isActive)"
-            @click="navigate"
+            href
+            @click.prevent="navigate"
           >
             {{ link.text }}
           </a>
@@ -71,6 +80,8 @@
 </template>
 
 <script>
+import { get } from 'vuex-pathify';
+
 export default {
   name: 'TheHeader',
   data() {
@@ -96,6 +107,9 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    loggedIn: get('auth/loggedIn'),
   },
   methods: {
     navLinkCsscLasses(isActive) {
