@@ -80,12 +80,11 @@ export default {
       return [
         'block', 'w-full', 'px-3', 'sm:text-sm', 'rounded-md',
         {
-          'text-red-500': this.error,
           'border-red-500': this.error,
           'focus:border-red-700': this.error,
           'focus:ring-red-700': this.error,
 
-          'text-secondary': !this.error && !this.disabled,
+          'text-secondary': !this.disabled,
           'border-secondary-lighter': !this.error && !this.disabled,
           'focus:border-secondary': !this.error && !this.disabled,
           'focus:ring-secondary': !this.error && !this.disabled,
