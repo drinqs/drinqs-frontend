@@ -62,7 +62,7 @@
 
       <div class="actions">
         <button
-          :disabled="loading || ($v.userData.$invalid && $v.userData.$anyDirty)"
+          :disabled="loading || formInvalid"
           type="submit"
           class="button button-primary w-full inline-flex items-center justify-center mb-2"
         >
@@ -87,6 +87,10 @@ export default {
     userData: {
       type: Object,
       required: true,
+    },
+    errors: {
+      type: Object,
+      default: () => ({}),
     },
     loading: {
       type: Boolean,
@@ -116,6 +120,11 @@ export default {
       },
     },
   },
+  computed: {
+    formInvalid() {
+      return (this.$v.userData.$invalid && this.$v.userData.$anyDirty);
+    },
+  },
   methods: {
     updateUserData(key, value) {
       this.$emit('change', {
@@ -131,7 +140,8 @@ export default {
     },
 
     getError(key) {
-      if (key === 'username' && this.$v.userData.username.$dirty) {
+      if (key === 'username' && (this.$v.userData.username.$dirty || this.errors.username)) {
+        if (this.errors.username) return this.errors.username;
         if (!this.$v.userData.username.required) return 'Username is required';
         if (!this.$v.userData.username.minLength) {
           return `Username must have at least ${this.$v.userData.username.$params.minLength.min} letters`;
@@ -139,13 +149,23 @@ export default {
         return '';
       }
 
-      if (key === 'email' && this.$v.userData.email.$dirty) {
+      if (key === 'email' && (this.$v.userData.email.$dirty || this.errors.email)) {
+        if (this.errors.email) return this.errors.email;
         if (!this.$v.userData.email.required) return 'Email is required';
         if (!this.$v.userData.email.email) return 'Email must be a valid email address';
         return '';
       }
 
-      if (key === 'password' && this.$v.userData.password.$dirty) {
+      if (key === 'firstName' && this.errors.firstName) {
+        return this.errors.firstName;
+      }
+
+      if (key === 'lastName' && this.errors.lastName) {
+        return this.errors.lastName;
+      }
+
+      if (key === 'password' && (this.$v.userData.password.$dirty || this.errors.password)) {
+        if (this.errors.password) return this.errors.password;
         if (!this.$v.userData.password.required) return 'Password is required';
         if (!this.$v.userData.password.minLength) {
           return `Password must have at least ${this.$v.userData.password.$params.minLength.min} letters`;

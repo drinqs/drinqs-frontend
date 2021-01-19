@@ -7,6 +7,7 @@
     <RegisterForm
       v-model="userData"
       :loading="loading"
+      :errors="errors"
       @register="onRegister"
     />
 
@@ -29,6 +30,15 @@
 import { mapActions } from 'vuex';
 import CreateUserMutation from '@/graphql/mutations/User/CreateUser.gql';
 
+function convertErrors(errors) {
+  return errors.reduce((errorsCollection, errorAtom) => {
+    // eslint-disable-next-line no-param-reassign
+    errorsCollection[errorAtom.key] = errorAtom.message;
+
+    return errorsCollection;
+  }, {});
+}
+
 export default {
   auth: false,
   middleware: 'guest',
@@ -42,6 +52,7 @@ export default {
         password: '',
         passwordConfirmation: '',
       },
+      errors: {},
       loading: false,
     };
   },
@@ -54,7 +65,7 @@ export default {
       try {
         const { username, email, firstName, lastName, password } = this.userData;
 
-        await this.$apolloProvider.defaultClient.mutate({
+        const { data } = await this.$apolloProvider.defaultClient.mutate({
           mutation: CreateUserMutation,
           variables: {
             username,
@@ -65,13 +76,18 @@ export default {
           },
         });
 
-        this.setFlashMessage({
-          type: 'success',
-          message: 'You successfully registered! You can now login.',
-          shortMessage: 'Successfully registered!',
-        });
+        if (Object.keys(data?.createUser?.errors || {}).length === 0) {
+          this.setFlashMessage({
+            type: 'success',
+            message: 'You successfully registered! You can now login.',
+            shortMessage: 'Successfully registered!',
+          });
 
-        this.$router.push({ path: '/login' });
+          this.$router.push({ path: '/login' });
+        } else {
+          this.errors = convertErrors(data.createUser.errors);
+          this.$notification.error('Oops! There are some errors in your inputs.');
+        }
       } catch (err) {
         this.$notification.error({
           message: 'Oops! Something went wrong. Please try again.',
