@@ -27,7 +27,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import createUserMutation from '@/graphql/mutations/user/createUser.gql';
+import CreateUserMutation from '@/graphql/mutations/User/CreateUser.gql';
 
 export default {
   auth: false,
@@ -55,7 +55,7 @@ export default {
         const { username, email, firstName, lastName, password } = this.userData;
 
         await this.$apolloProvider.defaultClient.mutate({
-          mutation: createUserMutation,
+          mutation: CreateUserMutation,
           variables: {
             username,
             email,

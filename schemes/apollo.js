@@ -1,6 +1,6 @@
-import meQuery from '@/graphql/queries/user/me.gql';
-import loginMutation from '@/graphql/mutations/user/authenticate.gql';
-import refreshTokenMutation from '@/graphql/mutations/user/refreshToken.gql';
+import MeQuery from '@/graphql/queries/User/Me.gql';
+import LoginMutation from '@/graphql/mutations/User/Authenticate.gql';
+import RefreshTokenMutation from '@/graphql/mutations/User/RefreshToken.gql';
 
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import { RefreshScheme, ExpiredAuthSessionError } from '~auth/runtime';
@@ -36,7 +36,7 @@ export default class ApolloScheme extends RefreshScheme {
 
   async login(variables) {
     const { data } = await this.$apollo.mutate({
-      mutation: loginMutation,
+      mutation: LoginMutation,
       variables,
     });
 
@@ -80,7 +80,7 @@ export default class ApolloScheme extends RefreshScheme {
 
     try {
       const { data } = await this.$apollo.mutate({
-        mutation: refreshTokenMutation,
+        mutation: RefreshTokenMutation,
         variables: {
           [this.options.refreshToken.property]: this.refreshToken.get(),
         },
@@ -127,7 +127,7 @@ export default class ApolloScheme extends RefreshScheme {
     }
 
     try {
-      const { data } = await this.$apollo.query({ query: meQuery });
+      const { data } = await this.$apollo.query({ query: MeQuery });
       this.setUser(Object.values(data)[0]);
     } catch (error) {
       this.$auth.callOnError(error, { method: 'fetchUser' });
