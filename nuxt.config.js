@@ -106,7 +106,7 @@ export default {
           required: true,
           property: 'token',
           type: 'JWT',
-          maxAge: 300,
+          maxAge: 60 * 60,
         },
         refreshToken: {
           property: 'refreshToken',
