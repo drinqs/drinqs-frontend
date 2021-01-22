@@ -20,11 +20,13 @@
 
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
-            <img
-              class="h-8 w-auto"
-              src="~/assets/images/logo.svg"
-              alt="Drinqs"
-            >
+            <NuxtLink to="/">
+              <img
+                class="h-8 w-auto"
+                src="~/assets/images/logo.svg"
+                alt="Drinqs"
+              >
+            </NuxtLink>
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
@@ -36,8 +38,8 @@
               >
                 <a
                   :class="navLinkCsscLasses(isActive)"
-                  href
-                  @click.prevent="navigate"
+                  :href="link.to"
+                  @click="navigate"
                 >
                   {{ link.text }}
                 </a>
@@ -68,8 +70,8 @@
         >
           <a
             :class="mobileNavLinkCssClasses(isActive)"
-            href
-            @click.prevent="navigate"
+            :href="link.to"
+            @click="navigate"
           >
             {{ link.text }}
           </a>
@@ -90,7 +92,7 @@ export default {
 
       navLinks: [
         {
-          to: '/',
+          to: '/start',
           text: 'Start',
         },
         {
@@ -98,12 +100,12 @@ export default {
           text: 'Drinq it!',
         },
         {
-          to: '/cocktails',
+          to: '/recommended-cocktails',
           text: 'Cocktails',
         },
         {
-          to: '/history',
-          text: 'History',
+          to: '/bookmarks',
+          text: 'Bookmarks',
         },
       ],
     };
