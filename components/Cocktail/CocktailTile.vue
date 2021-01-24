@@ -3,7 +3,7 @@
     <div class="shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer">
       <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
         <img
-          :src="cocktail.imageSrc"
+          :src="cocktail.thumbnailUrl"
           :alt="cocktail.name"
           class="max-h-full h-full w-full min-w-full rounded-md object-cover"
         >
