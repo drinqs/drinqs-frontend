@@ -36,7 +36,7 @@
             @click.prevent.stop="onFavoriteClick"
           >
             <span class="sr-only">Mark as favorite</span>
-            <HeartSolid v-if="isFavorite" class="w-6 h-6" />
+            <HeartSolid v-if="isBookmarked" class="w-6 h-6" />
             <Heart v-else class="w-6 h-6" />
           </button>
 
@@ -63,6 +63,8 @@
 </template>
 
 <script>
+import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
+
 export default {
   name: 'CocktailTile',
   props: {
@@ -73,8 +75,6 @@ export default {
   },
   data() {
     return {
-      // TODO
-      isFavorite: false,
       showShareModal: false,
     };
   },
@@ -82,11 +82,25 @@ export default {
     ingredientsList() {
       return this.cocktail.ingredients.map((ingredient) => ingredient.name).join(', ');
     },
+    isBookmarked() {
+      return this.cocktail.review?.bookmarked;
+    },
   },
   methods: {
-    onFavoriteClick() {
-      // TODO: VueX Store action?
-      this.isFavorite = !this.isFavorite;
+    async onFavoriteClick() {
+      const { data } = await this.$apolloProvider.defaultClient.mutate({
+        mutation: UpdateReviewMutation,
+        variables: {
+          cocktailId: this.cocktail.id,
+          bookmarked: !this.isBookmarked,
+        },
+      });
+
+      if (!this.cocktail.review) {
+        this.$set(this.cocktail, 'review', {});
+      }
+
+      this.$set(this.cocktail.review, 'bookmarked', data.review.review.bookmarked);
     },
     onShare() {
       this.showShareModal = true;

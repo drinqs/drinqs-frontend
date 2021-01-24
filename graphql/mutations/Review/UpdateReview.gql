@@ -1,0 +1,22 @@
+mutation UpdateReview(
+  $cocktailId: ID!
+  $liked: Boolean
+  $bookmarked: Boolean
+) {
+  review(
+    cocktailId: $cocktailId
+    liked: $liked
+    bookmarked: $bookmarked
+  ) {
+    review {
+      user {
+        id
+      }
+      cocktail {
+        id
+      }
+      liked
+      bookmarked
+    }
+  }
+}
