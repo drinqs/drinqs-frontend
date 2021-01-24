@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <div class="shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer">
+  <NuxtLink
+    v-slot="{ navigate }"
+    :to="`/cocktail/${cocktail.slug}`"
+  >
+    <div
+      class="cocktail-tile shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer"
+      :title="cocktail.title"
+      @click.stop="navigate"
+    >
       <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
         <img
           :src="cocktail.thumbnailUrl"
@@ -44,15 +51,15 @@
           </button>
         </div>
       </div>
-    </div>
 
-    <ShareModal
-      v-show="showShareModal"
-      :show="showShareModal"
-      :cocktail="cocktail"
-      @close="showShareModal = false"
-    />
-  </div>
+      <ShareModal
+        v-show="showShareModal"
+        :show="showShareModal"
+        :cocktail="cocktail"
+        @close="showShareModal = false"
+      />
+    </div>
+  </NuxtLink>
 </template>
 
 <script>
@@ -91,5 +98,11 @@ export default {
 <style lang="scss" scoped>
 .cocktail-info {
   max-width: calc(95vw - 7rem);
+}
+
+.cocktail-tile:hover {
+  .cocktail-tile--heading {
+    @apply underline;
+  }
 }
 </style>
