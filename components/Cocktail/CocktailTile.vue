@@ -11,8 +11,10 @@
 
       <div class="cocktail-info w-full h-full p-2 xs:max-w-full overflow-hidden">
         <div class="flex items-center mb-3">
-          <span class="font-bold text-base xs:text-lg text-secondary">{{ cocktail.name }}</span>
-          <Drink v-if="cocktail.alcoholic" class="h-4 w-4 xxs:w-6 xxs:h-6" />
+          <span class="cocktail-tile--heading font-bold text-base xs:text-lg text-secondary truncate">
+            {{ cocktail.name }}
+          </span>
+          <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 xxs:w-6 xxs:h-6" />
         </div>
 
         <div class="text-base truncate text-secondary mb-3">
