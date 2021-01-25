@@ -25,6 +25,10 @@ export default {
     ],
   },
 
+  loading: {
+    color: 'rgb(43, 30, 112)',
+  },
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '~/assets/stylesheets/app.scss',
@@ -102,7 +106,7 @@ export default {
           required: true,
           property: 'token',
           type: 'JWT',
-          maxAge: 300,
+          maxAge: 60 * 60,
         },
         refreshToken: {
           property: 'refreshToken',

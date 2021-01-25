@@ -14,7 +14,7 @@
           disabled
           class="w-full mr-2"
         />
-        <span class="inline-flex items-center cursor-pointer" @click="copyUrl">
+        <span class="inline-flex items-center cursor-pointer" @click.stop="copyUrl">
           <ClipboardCopy v-show="copyState === 'initial'" :class="iconCssClasses" />
           <Check v-show="copyState === 'success'" :class="iconCssClasses" />
           <X v-show="copyState === 'error'" :class="iconCssClasses" />
@@ -25,7 +25,7 @@
     <template #modal-footer>
       <button
         class="button-gray w-full inline-flex justify-center justify-self-center sm:ml-3 sm:w-auto sm:text-sm"
-        @click="close"
+        @click.stop="close"
       >
         Close
       </button>

@@ -1,9 +1,16 @@
 <template>
-  <div>
-    <div class="shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer">
+  <NuxtLink
+    v-slot="{ navigate }"
+    :to="`/cocktail/${cocktail.slug}`"
+  >
+    <div
+      class="cocktail-tile shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer"
+      :title="cocktail.title"
+      @click.stop="navigate"
+    >
       <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
         <img
-          :src="cocktail.imageSrc"
+          :src="cocktail.thumbnailUrl"
           :alt="cocktail.name"
           class="max-h-full h-full w-full min-w-full rounded-md object-cover"
         >
@@ -11,8 +18,10 @@
 
       <div class="cocktail-info w-full h-full p-2 xs:max-w-full overflow-hidden">
         <div class="flex items-center mb-3">
-          <span class="font-bold text-base xs:text-lg text-secondary">{{ cocktail.name }}</span>
-          <Drink v-if="cocktail.alcoholic" class="h-4 w-4 xxs:w-6 xxs:h-6" />
+          <span class="cocktail-tile--heading font-bold text-base xs:text-lg text-secondary truncate">
+            {{ cocktail.name }}
+          </span>
+          <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 xxs:w-6 xxs:h-6" />
         </div>
 
         <div class="text-base truncate text-secondary mb-3">
@@ -27,7 +36,7 @@
             @click.prevent.stop="onFavoriteClick"
           >
             <span class="sr-only">Mark as favorite</span>
-            <HeartSolid v-if="isFavorite" class="w-6 h-6" />
+            <HeartSolid v-if="isBookmarked" class="w-6 h-6" />
             <Heart v-else class="w-6 h-6" />
           </button>
 
@@ -42,18 +51,20 @@
           </button>
         </div>
       </div>
-    </div>
 
-    <ShareModal
-      v-show="showShareModal"
-      :show="showShareModal"
-      :cocktail="cocktail"
-      @close="showShareModal = false"
-    />
-  </div>
+      <ShareModal
+        v-show="showShareModal"
+        :show="showShareModal"
+        :cocktail="cocktail"
+        @close="showShareModal = false"
+      />
+    </div>
+  </NuxtLink>
 </template>
 
 <script>
+import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
+
 export default {
   name: 'CocktailTile',
   props: {
@@ -64,8 +75,6 @@ export default {
   },
   data() {
     return {
-      // TODO
-      isFavorite: false,
       showShareModal: false,
     };
   },
@@ -73,11 +82,25 @@ export default {
     ingredientsList() {
       return this.cocktail.ingredients.map((ingredient) => ingredient.name).join(', ');
     },
+    isBookmarked() {
+      return this.cocktail.review?.bookmarked;
+    },
   },
   methods: {
-    onFavoriteClick() {
-      // TODO: VueX Store action?
-      this.isFavorite = !this.isFavorite;
+    async onFavoriteClick() {
+      const { data } = await this.$apolloProvider.defaultClient.mutate({
+        mutation: UpdateReviewMutation,
+        variables: {
+          cocktailId: this.cocktail.id,
+          bookmarked: !this.isBookmarked,
+        },
+      });
+
+      if (!this.cocktail.review) {
+        this.$set(this.cocktail, 'review', {});
+      }
+
+      this.$set(this.cocktail.review, 'bookmarked', data.review.review.bookmarked);
     },
     onShare() {
       this.showShareModal = true;
@@ -89,5 +112,11 @@ export default {
 <style lang="scss" scoped>
 .cocktail-info {
   max-width: calc(95vw - 7rem);
+}
+
+.cocktail-tile:hover {
+  .cocktail-tile--heading {
+    @apply underline;
+  }
 }
 </style>

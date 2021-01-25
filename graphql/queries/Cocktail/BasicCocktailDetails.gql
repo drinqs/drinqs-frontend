@@ -1,0 +1,15 @@
+fragment BasicCocktailDetails on Cocktail {
+  id
+  slug
+  name
+  alcoholic
+  thumbnailUrl
+  ingredients {
+    name
+  }
+
+  review {
+    liked
+    bookmarked
+  }
+}
