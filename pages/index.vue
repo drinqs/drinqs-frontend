@@ -7,5 +7,8 @@
 <script>
 export default {
   auth: false,
+  middleware({ redirect }) {
+    redirect('/start');
+  },
 };
 </script>
