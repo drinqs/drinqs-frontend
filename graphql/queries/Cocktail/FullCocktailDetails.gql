@@ -1,0 +1,20 @@
+fragment FullCocktailDetails on Cocktail {
+  id
+  slug
+  name
+  alcoholic
+  category
+  preparation
+  thumbnailUrl
+  likeRatio
+  glass {
+    name
+  }
+  cocktailIngredients {
+    ingredient {
+      name
+    }
+    position
+    measurement
+  }
+}

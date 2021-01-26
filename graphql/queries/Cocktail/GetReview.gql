@@ -1,0 +1,8 @@
+query GetReview($cocktailSlug: String!) {
+  cocktail(slug: $cocktailSlug) {
+    review {
+      liked
+      bookmarked
+    }
+  }
+}

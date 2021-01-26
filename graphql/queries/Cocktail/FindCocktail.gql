@@ -1,0 +1,7 @@
+#import "./FullCocktailDetails.gql"
+
+query FindCocktail($slug: String!) {
+  cocktail(slug: $slug) {
+    ...FullCocktailDetails
+  }
+}
