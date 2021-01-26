@@ -92,7 +92,7 @@ export default {
         mutation: UpdateReviewMutation,
         variables: {
           cocktailId: this.cocktail.id,
-          bookmarked: this.isBookmarked ? true : null,
+          bookmarked: this.isBookmarked ? null : true,
         },
       });
 
