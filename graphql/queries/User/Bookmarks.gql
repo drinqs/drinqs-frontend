@@ -1,0 +1,13 @@
+#import "../cocktail/BasicCocktailDetails.gql"
+
+query Bookmarks($first: Int!, $after: String) {
+  bookmarks(first: $first, after: $after) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    cocktails {
+      ...BasicCocktailDetails
+    }
+  }
+}
