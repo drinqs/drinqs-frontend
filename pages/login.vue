@@ -47,8 +47,7 @@ export default {
 
         this.setFlashMessage({
           type: 'success',
-          message: `Welcome back, ${this.$auth.user.firstName}!`,
-          shortMessage: 'Welcome back!',
+          message: 'Welcome back!',
         });
       } catch (err) {
         this.$notification.error({
