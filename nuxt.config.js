@@ -39,6 +39,7 @@ export default {
     { src: '@/plugins/notification-plugin', mode: 'client' },
     { src: '@/plugins/vue-clipboard', mode: 'client' },
     { src: '@/plugins/vuelidate' },
+    { src: '@/plugins/apollo-overrides' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -90,6 +91,11 @@ export default {
     cookieAttributes: {
       // expiration in days
       expires: 7,
+    },
+    defaultOptions: {
+      $query: {
+        fetchPolicy: 'no-cache',
+      },
     },
   },
 
