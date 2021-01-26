@@ -86,7 +86,7 @@ export default {
   data() {
     return {
       showShareModal: false,
-      imageLoaded: false,
+      imageLoaded: !this.cocktail.thumbnailUrl,
     };
   },
   computed: {
