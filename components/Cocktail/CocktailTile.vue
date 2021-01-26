@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     v-slot="{ navigate }"
-    :to="`/cocktail/${cocktail.slug}`"
+    :to="`/cocktails/${cocktail.slug}`"
   >
     <div
       class="cocktail-tile shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer"
