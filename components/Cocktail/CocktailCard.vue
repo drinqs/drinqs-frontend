@@ -1,11 +1,21 @@
 <template>
-  <div class="rounded-md shadow-lg mx-auto">
+  <div
+    v-show="imageLoaded"
+    class="rounded-md shadow-lg mx-auto"
+  >
     <div class="w-full h-2/3 rounded-md rounded-b-none">
-      <img
-        :src="cocktail.imageSrc"
-        :alt="cocktail.name"
-        class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
+      <NuxtLink
+        v-slot="{ navigate }"
+        :to="`/cocktails/${cocktail.slug}`"
       >
+        <img
+          :src="cocktail.thumbnailUrl"
+          :alt="cocktail.name"
+          class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
+          @load="imageLoaded = true"
+          @click.stop="navigate"
+        >
+      </NuxtLink>
     </div>
 
     <div class="p-3 w-full h-1/3">
@@ -20,17 +30,6 @@
         <div class="inline-flex">
           <button
             type="button"
-            class="cursor-pointer text-red-500 hover:text-red-600 mr-4 inline-flex items-center justify-center
-              focus:outline-none"
-            @click.prevent.stop="onFavoriteClick"
-          >
-            <span class="sr-only">Mark as favorite</span>
-            <HeartSolid v-if="isFavorite" class="w-6 h-6" />
-            <Heart v-else class="w-6 h-6" />
-          </button>
-
-          <button
-            type="button"
             class="cursor-pointer text-gray-600 hover:text-gray-700 inline-flex items-center justify-center
               focus:outline-none"
             @click.prevent.stop="onShare"
@@ -41,7 +40,7 @@
         </div>
       </div>
 
-      <div class="w-full mb-6 text-secondary text-base">
+      <div class="w-full mb-6 text-secondary text-base truncate">
         {{ ingredientsList }}
       </div>
 
@@ -86,9 +85,8 @@ export default {
   },
   data() {
     return {
-      // TODO
-      isFavorite: false,
       showShareModal: false,
+      imageLoaded: false,
     };
   },
   computed: {
@@ -97,10 +95,6 @@ export default {
     },
   },
   methods: {
-    onFavoriteClick() {
-      // TODO: VueX Store action?
-      this.isFavorite = !this.isFavorite;
-    },
     onShare() {
       this.showShareModal = true;
     },
