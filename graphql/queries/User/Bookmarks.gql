@@ -1,4 +1,4 @@
-#import "../cocktail/BasicCocktailDetails.gql"
+#import "../Cocktail/BasicCocktailDetails.gql"
 
 query Bookmarks($first: Int!, $after: String) {
   bookmarks(first: $first, after: $after) {
