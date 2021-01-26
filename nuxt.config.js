@@ -148,6 +148,12 @@ export default {
     routes() {
       return [
         '/',
+        '/start',
+        '/recommended-cocktails',
+        '/drinq-it',
+        '/bookmarks',
+        '/login',
+        '/register',
       ];
     },
   },
