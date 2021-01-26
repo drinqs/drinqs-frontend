@@ -101,6 +101,9 @@ export default {
       }
 
       this.$set(this.cocktail.review, 'bookmarked', data.review.review.bookmarked);
+
+      const event = this.cocktail.review.bookmarked ? 'add-bookmark' : 'remove-bookmark';
+      this.$emit(event);
     },
     onShare() {
       this.showShareModal = true;
