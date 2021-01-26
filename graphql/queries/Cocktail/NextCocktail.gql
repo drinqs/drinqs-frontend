@@ -1,0 +1,7 @@
+#import "./BasicCocktailDetails.gql"
+
+query NextCocktail {
+  nextCocktail {
+    ...BasicCocktailDetails
+  }
+}
