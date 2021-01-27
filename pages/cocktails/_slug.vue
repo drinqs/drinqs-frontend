@@ -30,12 +30,38 @@
       </div>
     </div>
 
-    <div class="w-full rounded-md mb-4">
+    <div class="relative w-full rounded-md mb-4">
       <img
         :src="cocktail.thumbnailUrl"
         :alt="cocktail.name"
         class="max-h-full h-full w-full min-w-full rounded-md object-cover"
       >
+
+      <div class="absolute right-0 mt-4">
+        <div class="flex items-center">
+          <button
+            type="button"
+            class="cursor-pointer text-secondary hover:text-secondary-dark mr-2 inline-flex items-center justify-center
+              focus:outline-none"
+            @click.prevent.stop="onReview('like')"
+          >
+            <span class="sr-only">Like</span>
+            <ThumbUpSolid v-if="isLiked" class="w-6 h-6" />
+            <ThumbUp v-else class="w-6 h-6" />
+          </button>
+
+          <button
+            type="button"
+            class="cursor-pointertext-secondary hover:text-secondary-dark inline-flex items-center justify-center
+              focus:outline-none"
+            @click.prevent.stop="onReview('dislike')"
+          >
+            <span class="sr-only">Dislike</span>
+            <ThumbDownSolid v-if="isDisliked" class="w-6 h-6" />
+            <ThumbDown v-else class="w-6 h-6" />
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="w-full mb-4">
@@ -128,6 +154,12 @@ export default {
     isBookmarked() {
       return this.review?.bookmarked;
     },
+    isLiked() {
+      return this.review?.liked === true;
+    },
+    isDisliked() {
+      return this.review?.liked === false;
+    },
     recipe() {
       const sortedIngredients = [...this.cocktail.cocktailIngredients].sort((a, b) => a.position - b.position);
       return sortedIngredients.map((cocktailIngredient) => ({
@@ -141,9 +173,9 @@ export default {
     async onReview(rating) {
       let liked;
       if (rating === 'like') {
-        liked = this.review.liked === true ? null : true;
+        liked = this.isLiked ? null : true;
       } else {
-        liked = this.review.liked === false ? null : false;
+        liked = this.isDisliked ? null : false;
       }
 
       const { data } = await this.$apolloProvider.defaultClient.mutate({
