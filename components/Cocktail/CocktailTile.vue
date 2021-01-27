@@ -10,10 +10,16 @@
     >
       <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
         <img
+          v-if="cocktail.thumbnailUrl"
           :src="cocktail.thumbnailUrl"
           :alt="cocktail.name"
           class="max-h-full h-full w-full min-w-full rounded-md object-cover"
         >
+
+        <BeerCelebration
+          v-else
+          class="max-h-full h-full w-full min-w-full rounded-md object-cover"
+        />
       </div>
 
       <div class="cocktail-info w-full h-full p-2 xs:max-w-full overflow-hidden">

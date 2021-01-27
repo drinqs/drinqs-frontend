@@ -32,10 +32,16 @@
 
     <div class="relative w-full rounded-md mb-4">
       <img
+        v-if="cocktail.thumbnailUrl"
         :src="cocktail.thumbnailUrl"
         :alt="cocktail.name"
         class="max-h-full h-full w-full min-w-full rounded-md object-cover"
       >
+
+      <BeerCelebration
+        v-else
+        class="max-h-full h-full w-full min-w-full rounded-md object-cover"
+      />
 
       <div class="absolute right-0 mt-4">
         <div class="flex items-center">
