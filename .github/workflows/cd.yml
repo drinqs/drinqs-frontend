@@ -43,7 +43,7 @@ jobs:
         env:
           GQL_ENDPOINT: ${{ secrets.GQL_ENDPOINT }}
           GQL_USERNAME: ${{ secrets.GQL_USERNAME }}
-          GQL_PASSWORDE: ${{ secrets.GQL_PASSWORDE }}
+          GQL_PASSWORD: ${{ secrets.GQL_PASSWORD }}
         run: yarn run generate
 
       - name: Deploy
