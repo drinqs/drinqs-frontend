@@ -129,7 +129,6 @@
         text-color="text-pink-700"
         background-color="bg-pink-100"
         hover-color="hover:bg-pink-500"
-        class="w-fit"
       >
         {{ cocktail.category }}
       </Badge>

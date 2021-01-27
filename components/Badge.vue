@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-4 h-6 rounded-full text-xs font-semibold flex items-center cursor-pointer"
+    class="px-4 h-6 rounded-full text-xs font-semibold flex items-center w-fit"
     :class="colorCssClasses"
   >
     <span v-if="dotColor" class="w-2 h-2 rounded-full mr-1" :class="dotColor" />
@@ -39,6 +39,10 @@ export default {
         classes.push(...[
           this.hoverColor,
           'hover:text-white',
+          'cursor-pointer',
+          'transition-colors',
+          'duration-200',
+          'ease-in-out',
         ]);
       }
 
