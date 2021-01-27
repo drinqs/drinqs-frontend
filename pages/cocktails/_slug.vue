@@ -99,7 +99,7 @@
 
     <div
       v-if="cocktail.preparation"
-      class="w-full mb-2"
+      class="w-full mb-4"
     >
       <h2 class="font-semibold text-secondary text-lg mb-1">
         Preparation
@@ -108,6 +108,25 @@
       <p class="px-2 py-1">
         {{ cocktail.preparation }}
       </p>
+    </div>
+
+    <div
+      v-if="cocktail.category"
+      class="w-full mb-2"
+    >
+      <h2 class="font-semibold text-secondary text-lg mb-1">
+        Category
+      </h2>
+
+      <Badge
+        dot-color="bg-pink-400"
+        text-color="text-pink-700"
+        background-color="bg-pink-100"
+        hover-color="hover:bg-pink-500"
+        class="w-fit"
+      >
+        {{ cocktail.category }}
+      </Badge>
     </div>
 
     <ShareModal
@@ -123,8 +142,10 @@
 import FindCocktailQuery from '@/graphql/queries/Cocktail/FindCocktail.gql';
 import GetReviewQuery from '@/graphql/queries/Cocktail/GetReview.gql';
 import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
+import Badge from '~/components/Badge.vue';
 
 export default {
+  components: { Badge },
   async asyncData({ app, params, payload }) {
     if (payload) {
       return {

@@ -43,6 +43,9 @@ module.exports = {
         'underline-primary': '0 3px 0 rgb(255, 39, 115)',
         'underline-secondary': '0 3px 0 rgb(43, 30, 112)',
       },
+      width: {
+        fit: 'fit-content',
+      },
     },
   },
   variants: {
