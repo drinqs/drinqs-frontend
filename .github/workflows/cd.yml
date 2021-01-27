@@ -41,6 +41,7 @@ jobs:
 
       - name: Generate
         env:
+          GQL_ENDPOINT: ${{ secrets.GQL_ENDPOINT }}
           GQL_USERNAME: ${{ secrets.GQL_USERNAME }}
           GQL_PASSWORDE: ${{ secrets.GQL_PASSWORDE }}
         run: yarn run generate
