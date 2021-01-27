@@ -163,6 +163,7 @@ export default {
         '/bookmarks',
         '/login',
         '/register',
+        '/profile',
         ...cocktailRoutes,
       ];
     },

@@ -1,0 +1,28 @@
+mutation UpdateProfile(
+  $password: String
+  $firstName: String
+  $lastName: String
+  $username: String
+  $email: String
+) {
+  updateProfile(
+    password: $password
+    firstName: $firstName
+    lastName: $lastName
+    username: $username
+    email: $email
+  ) {
+    user {
+      id
+      firstName
+      lastName
+      email
+      username
+    }
+
+    errors {
+      key
+      message
+    }
+  }
+}
