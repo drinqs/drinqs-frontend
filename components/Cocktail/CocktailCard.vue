@@ -9,12 +9,18 @@
         :to="`/cocktails/${cocktail.slug}`"
       >
         <img
+          v-if="cocktail.thumbnailUrl"
           :src="cocktail.thumbnailUrl"
           :alt="cocktail.name"
           class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
           @load="imageLoaded = true"
           @click.stop="navigate"
         >
+        <BeerCelebration
+          v-else
+          class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
+          @click.stop="navigate"
+        />
       </NuxtLink>
     </div>
 
