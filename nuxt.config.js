@@ -115,11 +115,13 @@ export default {
           required: true,
           property: 'token',
           type: 'JWT',
-          maxAge: 60 * 59,
+          // 30 minutes
+          maxAge: 1800,
         },
         refreshToken: {
           property: 'refreshToken',
-          maxAge: 60 * 59 * 24 * 7,
+          // nearly 7 days
+          maxAge: 600000,
           required: true,
           tokenRequired: false,
         },
