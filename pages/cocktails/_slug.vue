@@ -224,7 +224,7 @@ export default {
         variables: {
           cocktailId: this.cocktail.id,
           liked,
-          bookmarked: this.cocktail.review?.bookmarked,
+          bookmarked: this.review?.bookmarked,
         },
       });
 
@@ -239,7 +239,7 @@ export default {
         mutation: UpdateReviewMutation,
         variables: {
           cocktailId: this.cocktail.id,
-          liked: this.cocktail.review?.liked,
+          liked: this.review?.liked,
           bookmarked,
         },
       });
