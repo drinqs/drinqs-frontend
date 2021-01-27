@@ -21,6 +21,7 @@ export default async () => {
       password: process.env.GQL_PASSWORD,
     },
   });
+  console.log(loginQuery);
   const { token } = loginQuery.data.tokenAuth;
   apolloFetch.use(({ options }, next) => {
     if (!options.headers) {
@@ -42,7 +43,7 @@ export default async () => {
     };
 
     // eslint-disable-next-line no-await-in-loop
-    const { data } = await apolloFetch({
+    const { data, errors } = await apolloFetch({
       query: `
         query AllCocktails {
           cocktails {
@@ -75,6 +76,8 @@ export default async () => {
       `,
       variables,
     });
+
+    console.log(errors);
 
     hasNextPage = data.cocktails.pageInfo.hasNextPage;
     after = data.cocktails.pageInfo.endCursor;
