@@ -64,6 +64,17 @@
       </div>
     </div>
 
+    <div
+      v-if="cocktail.glass"
+      class="w-full mb-4"
+    >
+      <h2 class="font-semibold text-secondary text-lg mb-1">
+        Served in ...
+      </h2>
+
+      <p>{{ cocktail.glass.name }}</p>
+    </div>
+
     <div class="w-full mb-4">
       <h2 class="font-semibold text-secondary text-lg mb-1">
         Ingredients
@@ -86,7 +97,10 @@
       </table>
     </div>
 
-    <div class="w-full mb-2">
+    <div
+      v-if="cocktail.preparation"
+      class="w-full mb-2"
+    >
       <h2 class="font-semibold text-secondary text-lg mb-1">
         Preparation
       </h2>
