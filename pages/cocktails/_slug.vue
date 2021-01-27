@@ -52,7 +52,7 @@
 
           <button
             type="button"
-            class="cursor-pointertext-secondary hover:text-secondary-dark inline-flex items-center justify-center
+            class="cursor-pointer text-secondary hover:text-secondary-dark inline-flex items-center justify-center
               focus:outline-none"
             @click.prevent.stop="onReview('dislike')"
           >
