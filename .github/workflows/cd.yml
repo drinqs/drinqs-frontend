@@ -40,6 +40,9 @@ jobs:
         run: yarn
 
       - name: Generate
+        env:
+          GQL_USERNAME: ${{ secrets.GQL_USERNAME }}
+          GQL_PASSWORDE: ${{ secrets.GQL_PASSWORDE }}
         run: yarn run generate
 
       - name: Deploy

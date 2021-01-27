@@ -1,3 +1,5 @@
+import fetchAllCocktailRoutes from './build/cocktail-routes';
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -145,8 +147,12 @@ export default {
         '@babel/plugin-proposal-optional-chaining',
       ],
     },
+  },
 
-    routes() {
+  generate: {
+    async routes() {
+      const cocktailRoutes = await fetchAllCocktailRoutes();
+
       return [
         '/',
         '/start',
@@ -155,6 +161,7 @@ export default {
         '/bookmarks',
         '/login',
         '/register',
+        ...cocktailRoutes,
       ];
     },
   },
