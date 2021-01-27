@@ -80,6 +80,11 @@ export default {
       showUserDropdown: false,
     };
   },
+  watch: {
+    $route() {
+      this.showUserDropdown = false;
+    },
+  },
   methods: {
     ...mapActions('flash', ['setFlashMessage']),
 
