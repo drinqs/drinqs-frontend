@@ -76,7 +76,7 @@ export default {
           },
         });
 
-        if (Object.keys(data?.createUser?.errors || {}).length === 0) {
+        if ((data.createUser?.errors || []).length === 0) {
           this.setFlashMessage({
             type: 'success',
             message: 'You successfully registered! You can now login.',
