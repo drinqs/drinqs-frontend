@@ -175,7 +175,7 @@ export default {
 
       if (key === 'passwordConfirmation' && this.$v.userData.passwordConfirmation.$dirty) {
         if (!this.$v.userData.passwordConfirmation.required) return 'Password confirmation is required';
-        if (!this.$v.userData.passwordConfirmation.sameAsPassword) return 'Password do not match';
+        if (!this.$v.userData.passwordConfirmation.sameAsPassword) return 'Passwords do not match';
         return '';
       }
 
