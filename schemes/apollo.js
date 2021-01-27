@@ -130,6 +130,7 @@ export default class ApolloScheme extends RefreshScheme {
       const { data } = await this.$apollo.query({ query: MeQuery });
       this.setUser(Object.values(data)[0]);
     } catch (error) {
+      this.logout();
       this.$auth.callOnError(error, { method: 'fetchUser' });
     }
   }
