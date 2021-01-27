@@ -125,6 +125,11 @@ export default {
   computed: {
     loggedIn: get('auth/loggedIn'),
   },
+  watch: {
+    $route() {
+      this.showMobileMenu = false;
+    },
+  },
   methods: {
     navLinkCsscLasses(isActive) {
       return [
