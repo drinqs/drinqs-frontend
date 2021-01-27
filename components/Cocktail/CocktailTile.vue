@@ -99,6 +99,7 @@ export default {
         variables: {
           cocktailId: this.cocktail.id,
           bookmarked: this.isBookmarked ? null : true,
+          liked: this.cocktail.review?.liked,
         },
       });
 

@@ -44,6 +44,7 @@ export default {
         variables: {
           cocktailId: this.cocktail.id,
           bookmarked: true,
+          liked: this.cocktail.review?.liked,
         },
       });
 
@@ -55,6 +56,7 @@ export default {
         variables: {
           cocktailId: this.cocktail.id,
           bookmarked: false,
+          liked: this.cocktail.review?.liked,
         },
       });
 
