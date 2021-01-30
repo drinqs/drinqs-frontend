@@ -158,9 +158,10 @@ export default {
       return [
         '/',
         '/start',
-        '/recommended-cocktails',
         '/drinq-it',
+        '/recommended-cocktails',
         '/bookmarks',
+        '/search',
         '/login',
         '/register',
         '/profile',

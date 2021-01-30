@@ -119,6 +119,10 @@ export default {
           to: '/bookmarks',
           text: 'Bookmarks',
         },
+        {
+          to: '/search',
+          text: 'Search',
+        },
       ],
     };
   },
