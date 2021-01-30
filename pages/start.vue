@@ -45,6 +45,11 @@ export default {
           to: '/bookmarks',
           icon: 'bookmarks',
         },
+        {
+          text: 'Search',
+          to: '/search',
+          icon: 'searching',
+        },
       ],
     };
   },

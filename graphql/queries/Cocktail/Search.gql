@@ -1,0 +1,13 @@
+#import "./BasicCocktailDetails.gql"
+
+query CocktailSearch($searchTerm: String, $first: Int!, $after: String) {
+  search(searchTerm: $searchTerm, first: $first, after: $after) {
+    cocktails {
+      ...BasicCocktailDetails
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
