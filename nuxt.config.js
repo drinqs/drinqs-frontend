@@ -99,7 +99,6 @@ export default {
         fetchPolicy: 'no-cache',
       },
     },
-    errorHandler: '~/apollo/error-handler.js',
   },
 
   auth: {

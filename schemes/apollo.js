@@ -86,7 +86,7 @@ export default class ApolloScheme extends RefreshScheme {
         },
       });
 
-      this.updateTokens(Object.values(data)[0], { isRefreshing: true });
+      await this.updateTokens(Object.values(data)[0], { isRefreshing: true });
     } catch (error) {
       this.$auth.callOnError(error, { method: 'refreshToken' });
       throw error;
