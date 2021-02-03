@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div
-          v-show="loggedIn"
+          v-show="$auth.loggedIn"
           class="absolute inset-y-0 left-0 flex items-center sm:hidden"
         >
           <!-- Mobile menu button-->
@@ -23,11 +23,11 @@
 
         <div
           class="flex items-center justify-center sm:items-stretch sm:justify-start"
-          :class="{ 'flex-1': loggedIn, 'pl-2': !loggedIn }"
+          :class="{ 'flex-1': $auth.loggedIn, 'pl-2': !$auth.loggedIn }"
         >
           <div
             class="flex items-center"
-            :class="{ 'flex-shrink-0': loggedIn }"
+            :class="{ 'flex-shrink-0': $auth.loggedIn }"
           >
             <NuxtLink to="/">
               <img
@@ -38,7 +38,7 @@
             </NuxtLink>
           </div>
           <div
-            v-show="loggedIn"
+            v-show="$auth.loggedIn"
             class="hidden sm:block sm:ml-6"
           >
             <div class="flex space-x-4">
@@ -60,9 +60,9 @@
           </div>
         </div>
 
-        <UserDropdown v-show="loggedIn" />
+        <UserDropdown v-show="$auth.loggedIn" />
         <NuxtLink
-          v-show="!loggedIn"
+          v-show="!$auth.loggedIn"
           to="/login"
           class="font-semibold no-underline hover:underline text-secondary p-2"
         >
@@ -94,8 +94,6 @@
 </template>
 
 <script>
-import { get } from 'vuex-pathify';
-
 export default {
   name: 'TheHeader',
   data() {
@@ -125,9 +123,6 @@ export default {
         },
       ],
     };
-  },
-  computed: {
-    loggedIn: get('auth/loggedIn'),
   },
   watch: {
     $route() {
