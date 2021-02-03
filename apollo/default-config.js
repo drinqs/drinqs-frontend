@@ -13,18 +13,18 @@ const promiseToObservable = (promise) => new Observable((subscriber) => {
   );
 });
 
-export default ({ $config: { graphQLEndpoint } }) => {
+export default (context) => {
+  const { $config: { graphQLEndpoint } } = context;
   const link = onError(({ graphQLErrors, forward, operation }) => {
     if (process.server) return undefined;
     if (!graphQLErrors) return undefined;
     if (!graphQLErrors.map((error) => error.message).includes('Signature has expired')) return undefined;
+    const { $auth } = context;
 
-    // eslint-disable-next-line no-undef
-    return promiseToObservable($nuxt.$auth.refreshTokens()).flatMap(() => {
+    return promiseToObservable($auth.refreshTokens()).flatMap(() => {
       operation.setContext(() => ({
         headers: {
-          // eslint-disable-next-line no-undef
-          Authorization: $nuxt.$auth.strategies.apollo.token.get(),
+          Authorization: $auth.strategies.apollo.token.get(),
         },
       }));
 
