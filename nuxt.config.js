@@ -38,10 +38,10 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '@/plugins/notification-plugin', mode: 'client' },
-    { src: '@/plugins/vue-clipboard', mode: 'client' },
-    { src: '@/plugins/vuelidate' },
-    { src: '@/plugins/apollo-overrides' },
+    { src: '~/plugins/notification-plugin', mode: 'client' },
+    { src: '~/plugins/vue-clipboard', mode: 'client' },
+    { src: '~/plugins/vuelidate' },
+    { src: '~/plugins/apollo-overrides' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -73,9 +73,9 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    '@nuxtjs/apollo',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/apollo',
   ],
 
   publicRuntimeConfig: {
@@ -137,7 +137,6 @@ export default {
 
   router: {
     middleware: [
-      'logged-in-state',
       'auth',
     ],
   },
