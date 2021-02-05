@@ -43,7 +43,7 @@ export default {
       this.loading = true;
 
       try {
-        await this.$auth.loginWith('apollo', { ...this.userData });
+        await this.$auth.loginWith('local', { data: { ...this.userData } });
 
         this.setFlashMessage({
           type: 'success',

@@ -24,7 +24,7 @@ export default (context) => {
     return promiseToObservable($auth.refreshTokens()).flatMap(() => {
       operation.setContext(() => ({
         headers: {
-          Authorization: $auth.strategies.apollo.token.get(),
+          Authorization: $auth.getStrategy().token.get(),
         },
       }));
 

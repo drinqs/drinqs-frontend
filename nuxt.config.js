@@ -103,15 +103,9 @@ export default {
 
   auth: {
     strategies: {
-      local: false,
-
-      apollo: {
-        scheme: '~/schemes/apollo.js',
-        name: 'apollo',
-        provider: 'apollo',
-
+      local: {
+        scheme: '~/schemes/apollo.scheme.js',
         token: {
-          required: true,
           property: 'token',
           type: 'JWT',
           // nearly one day
@@ -119,10 +113,21 @@ export default {
         },
         refreshToken: {
           property: 'refreshToken',
+          data: 'refreshToken',
           // nearly 30 days
           maxAge: 2000000,
           required: true,
-          tokenRequired: false,
+          tokenRequired: true,
+        },
+        user: {
+          property: 'user',
+          autoFetch: true,
+        },
+        endpoints: {
+          login: { url: `${process.env.API_URL || 'https://app.drinqs.de'}/api/auth/login`, method: 'post' },
+          refresh: { url: `${process.env.API_URL || 'https://app.drinqs.de'}/api/auth/refresh`, method: 'post' },
+          user: { url: `${process.env.API_URL || 'https://app.drinqs.de'}/api/auth/user`, method: 'get' },
+          logout: false,
         },
         autoLogout: false,
       },
@@ -137,6 +142,7 @@ export default {
   router: {
     middleware: [
       'auth',
+      'sync-authentication',
     ],
   },
 
