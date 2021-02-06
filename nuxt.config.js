@@ -41,7 +41,7 @@ export default {
     { src: '~/plugins/notification-plugin', mode: 'client' },
     { src: '~/plugins/vue-clipboard', mode: 'client' },
     { src: '~/plugins/vuelidate' },
-    { src: '~/plugins/apollo-overrides' },
+    { src: '~/plugins/navigation' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

@@ -22,9 +22,14 @@ export default {
   },
   mounted() {
     this.showFlashMessage();
+    window.addEventListener('popstate', this.onBackNavigation);
+  },
+  beforeDestroy() {
+    window.removeEventListener('popstate', this.onBackNavigation);
   },
   methods: {
     ...mapActions('flash', ['consumeFlashMessage']),
+    ...mapActions('navigation', ['onBackNavigation']),
 
     showFlashMessage() {
       if (this.flashMessage) {
