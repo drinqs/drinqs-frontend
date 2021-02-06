@@ -41,11 +41,6 @@ export default {
           icon: 'wine-tasting',
         },
         {
-          text: 'Bookmarks',
-          to: '/bookmarks',
-          icon: 'bookmarks',
-        },
-        {
           text: 'Search',
           to: '/search',
           icon: 'searching',
