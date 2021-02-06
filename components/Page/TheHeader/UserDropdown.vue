@@ -53,6 +53,14 @@
             Your Profile
           </NuxtLink>
 
+          <NuxtLink
+            to="/bookmarks"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            role="menuitem"
+          >
+            Bookmarks & Reviews
+          </NuxtLink>
+
           <a
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
             role="menuitem"

@@ -114,10 +114,6 @@ export default {
           text: 'Cocktails',
         },
         {
-          to: '/bookmarks',
-          text: 'Bookmarks',
-        },
-        {
           to: '/search',
           text: 'Search',
         },
