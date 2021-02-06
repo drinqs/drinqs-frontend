@@ -1,0 +1,13 @@
+#import "../Cocktail/BasicCocktailDetails.gql"
+
+query DislikedCocktails($first: Int!, $after: String) {
+  dislikedCocktails(first: $first, after: $after) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    cocktails {
+      ...BasicCocktailDetails
+    }
+  }
+}
