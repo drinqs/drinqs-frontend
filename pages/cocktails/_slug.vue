@@ -2,8 +2,10 @@
   <div class="max-w-lg mx-auto w-full">
     <div class="flex items-center justify-between mb-4">
       <h1 class="flex items-center">
-        <span class="text-secondary font-bold text-xl ">{{ cocktail.name }}</span>
-        <Drink v-if="cocktail.alcoholic" class="inline h-6 w-6" />
+        <span class="text-secondary font-bold text-xl ">
+          {{ cocktail.name }}
+          <Drink v-if="cocktail.alcoholic" class="inline h-6 w-6" />
+        </span>
       </h1>
 
       <div class="flex items-center">
