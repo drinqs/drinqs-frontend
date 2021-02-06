@@ -35,42 +35,16 @@
         </div>
 
         <div class="flex items-center absolute bottom-0 right-0 mb-3 mr-3">
-          <button
-            type="button"
-            class="cursor-pointer text-red-500 hover:text-red-600 mr-8 inline-flex items-center justify-center
-              focus:outline-none"
-            @click.prevent.stop="onFavoriteClick"
-          >
-            <span class="sr-only">Mark as favorite</span>
-            <HeartSolid v-if="isBookmarked" class="w-6 h-6" />
-            <Heart v-else class="w-6 h-6" />
-          </button>
-
-          <button
-            type="button"
-            class="cursor-pointer text-gray-600 hover:text-gray-700 inline-flex items-center justify-center
-              focus:outline-none"
-            @click.prevent.stop="onShare"
-          >
-            <span class="sr-only">Share via URL</span>
-            <Share class="h-6 w-6" />
-          </button>
+          <ReviewSection v-model="review" :cocktail-id="cocktail.id" class="inline-flex mr-8" />
+          <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-8" />
+          <ShareButton :cocktail="cocktail" />
         </div>
       </div>
-
-      <ShareModal
-        v-show="showShareModal"
-        :show="showShareModal"
-        :cocktail="cocktail"
-        @close="showShareModal = false"
-      />
     </div>
   </NuxtLink>
 </template>
 
 <script>
-import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
-
 export default {
   name: 'CocktailTile',
   props: {
@@ -82,38 +56,12 @@ export default {
   data() {
     return {
       showShareModal: false,
+      review: this.cocktail.review,
     };
   },
   computed: {
     ingredientsList() {
       return this.cocktail.ingredients.map((ingredient) => ingredient.name).join(', ');
-    },
-    isBookmarked() {
-      return this.cocktail.review?.bookmarked;
-    },
-  },
-  methods: {
-    async onFavoriteClick() {
-      const { data } = await this.$apolloProvider.defaultClient.mutate({
-        mutation: UpdateReviewMutation,
-        variables: {
-          cocktailId: this.cocktail.id,
-          bookmarked: this.isBookmarked ? null : true,
-          liked: this.cocktail.review?.liked,
-        },
-      });
-
-      if (!this.cocktail.review) {
-        this.$set(this.cocktail, 'review', {});
-      }
-
-      this.$set(this.cocktail.review, 'bookmarked', data.review.review.bookmarked);
-
-      const event = this.cocktail.review.bookmarked ? 'add-bookmark' : 'remove-bookmark';
-      this.$emit(event);
-    },
-    onShare() {
-      this.showShareModal = true;
     },
   },
 };

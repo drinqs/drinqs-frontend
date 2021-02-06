@@ -43,8 +43,8 @@ export default {
         mutation: UpdateReviewMutation,
         variables: {
           cocktailId: this.cocktail.id,
-          bookmarked: true,
-          liked: this.cocktail.review?.liked,
+          bookmarked: this.cocktail.review?.bookmarked,
+          liked: true,
         },
       });
 
@@ -55,8 +55,8 @@ export default {
         mutation: UpdateReviewMutation,
         variables: {
           cocktailId: this.cocktail.id,
-          bookmarked: false,
-          liked: this.cocktail.review?.liked,
+          bookmarked: this.cocktail.review?.bookmarked,
+          liked: false,
         },
       });
 
