@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TheHeader />
-    <div class="mx-auto p-4">
+    <TheHeader class="fixed w-full top-0 z-10 shadow-sm" />
+    <div class="mx-auto p-4 mt-16">
       <Nuxt />
     </div>
   </div>
