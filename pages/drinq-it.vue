@@ -11,6 +11,15 @@
       :style="{ height: '32rem' }"
       @accept="onAccepted"
       @reject="onRejected"
+    >
+      <template #pending>
+        <Spinner class="text-secondary h-12 w-12 mx-auto mt-48" />
+      </template>
+    </CocktailCard>
+
+    <Spinner
+      v-else
+      class="text-secondary h-12 w-12 mx-auto mt-48"
     />
   </div>
 </template>
