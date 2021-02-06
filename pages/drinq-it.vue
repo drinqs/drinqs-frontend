@@ -25,28 +25,25 @@
 </template>
 
 <script>
-import NextCocktailQuery from '@/graphql/queries/Cocktail/NextCocktail.gql';
+import { get, call } from 'vuex-pathify';
 import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
 
 export default {
-  data() {
-    return {
-      cocktail: null,
-      nextCocktail: null,
-    };
+  computed: {
+    cocktail: get('drinq-it/cocktail'),
+    nextCocktail: get('drinq-it/nextCocktail'),
+    isBackNavigation: get('navigation/isBackNavigation'),
   },
-  async fetch() {
-    if (this.nextCocktail?.slug) {
-      this.cocktail = this.nextCocktail;
-    } else {
-      const { data } = await this.$apolloProvider.defaultClient.query({ query: NextCocktailQuery });
-      this.cocktail = data.nextCocktail;
+  mounted() {
+    if (!this.isBackNavigation) {
+      this.reset();
+      this.fetchNextCocktail();
     }
-
-    const { data: secondQuery } = await this.$apolloProvider.defaultClient.query({ query: NextCocktailQuery });
-    this.nextCocktail = secondQuery.nextCocktail;
   },
   methods: {
+    fetchNextCocktail: call('drinq-it/fetch'),
+    reset: call('drinq-it/reset'),
+
     onAccepted() {
       this.$apolloProvider.defaultClient.mutate({
         mutation: UpdateReviewMutation,
@@ -57,7 +54,7 @@ export default {
         },
       });
 
-      this.$fetch();
+      this.fetchNextCocktail();
     },
     onRejected() {
       this.$apolloProvider.defaultClient.mutate({
@@ -69,7 +66,7 @@ export default {
         },
       });
 
-      this.$fetch();
+      this.fetchNextCocktail();
     },
   },
 };

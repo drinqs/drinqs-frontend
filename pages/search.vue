@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { get } from 'vuex-pathify';
+import { get, call } from 'vuex-pathify';
 import { mapActions } from 'vuex';
 
 export default {
@@ -36,6 +36,7 @@ export default {
     loading: get('search/loading'),
     error: get('search/error'),
     searchResults: get('search/searchResults'),
+    isBackNavigation: get('navigation/isBackNavigation'),
   },
   watch: {
     error(error) {
@@ -46,13 +47,18 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
-    this.performSearch();
+    if (!this.isBackNavigation) {
+      this.resetSearch();
+      window.scrollTo(0, 0);
+      this.performSearch();
+    }
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.onScroll);
   },
   methods: {
     ...mapActions('search', ['setSearchResults', 'performSearch']),
+    resetSearch: call('search/reset'),
 
     onScroll() {
       // if bottom of page reached

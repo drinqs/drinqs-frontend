@@ -12,48 +12,40 @@
     />
 
     <Spinner
-      v-show="$fetchState.pending"
+      v-show="loading"
       class="text-secondary h-12 w-12 mx-auto"
     />
   </div>
 </template>
 
 <script>
-import RecommendedCocktailsQuery from '@/graphql/queries/Cocktail/RecommendedCocktails.gql';
+import { get, call } from 'vuex-pathify';
 
 export default {
-  data() {
-    return {
-      cocktails: [],
-      endCursor: null,
-      nextPageAvailable: true,
-    };
-  },
-  async fetch() {
-    const variables = { first: 10 };
-    if (this.endCursor) variables.after = this.endCursor;
-
-    const { data } = await this.$apolloProvider.defaultClient.query({
-      query: RecommendedCocktailsQuery,
-      variables,
-    });
-
-    this.endCursor = data.recommendedCocktails.pageInfo.endCursor;
-    this.nextPageAvailable = data.recommendedCocktails.pageInfo.hasNextPage;
-
-    this.cocktails.push(...data.recommendedCocktails.cocktails);
+  computed: {
+    loading: get('recommended-cocktails/loading'),
+    cocktails: get('recommended-cocktails/cocktails'),
+    isBackNavigation: get('navigation/isBackNavigation'),
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
+    if (!this.isBackNavigation) {
+      this.reset();
+      window.scrollTo(0, 0);
+      this.fetchCocktails();
+    }
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.onScroll);
   },
   methods: {
+    reset: call('recommended-cocktails/reset'),
+    fetchCocktails: call('recommended-cocktails/fetch'),
+
     onScroll() {
       // if bottom of page reached
       if (document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight) {
-        if (this.nextPageAvailable) this.$fetch();
+        this.fetchCocktails();
       }
     },
   },
