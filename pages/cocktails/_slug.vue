@@ -124,7 +124,7 @@ export default {
       showShareModal: false,
       review: {
         liked: null,
-        bookmarked: null,
+        bookmarked: false,
       },
     };
   },
