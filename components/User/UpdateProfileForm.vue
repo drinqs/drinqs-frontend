@@ -7,6 +7,10 @@
           :value="userData.username"
           :error="getError('username')"
           label="Username"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
           @input="updateUserData('username', $event)"
         />
       </div>

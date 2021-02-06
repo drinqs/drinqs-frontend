@@ -7,6 +7,10 @@
           :value="userData.username"
           label="Username"
           placeholder="username"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
           @input="updateUserData('username', $event)"
         />
       </div>
