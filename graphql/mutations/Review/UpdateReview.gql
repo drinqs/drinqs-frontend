@@ -9,12 +9,6 @@ mutation UpdateReview(
     bookmarked: $bookmarked
   ) {
     review {
-      user {
-        id
-      }
-      cocktail {
-        id
-      }
       liked
       bookmarked
     }
