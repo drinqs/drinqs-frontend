@@ -2,24 +2,24 @@
   <div class="flex items-center">
     <button
       type="button"
-      class="cursor-pointer text-green-600 hover:text-green-700 mr-2 inline-flex items-center justify-center
+      class="cursor-pointer mr-2 inline-flex items-center justify-center
         focus:outline-none"
       @click.prevent.stop="onReview('like')"
     >
       <span class="sr-only">Like</span>
-      <ThumbUpSolid v-if="isLiked" class="w-6 h-6" />
-      <ThumbUp v-else class="w-6 h-6" />
+      <ThumbUpSolid v-if="isLiked" class="w-6 h-6 text-green-600 hover:text-green-700" />
+      <ThumbUp v-else class="w-6 h-6 text-secondary hover:text-secondary-dark" />
     </button>
 
     <button
       type="button"
-      class="cursor-pointer text-red-600 hover:text-red-700 inline-flex items-center justify-center
+      class="cursor-pointer inline-flex items-center justify-center
         focus:outline-none"
       @click.prevent.stop="onReview('dislike')"
     >
       <span class="sr-only">Dislike</span>
-      <ThumbDownSolid v-if="isDisliked" class="w-6 h-6" />
-      <ThumbDown v-else class="w-6 h-6" />
+      <ThumbDownSolid v-if="isDisliked" class="w-6 h-6 text-red-600 hover:text-red-700" />
+      <ThumbDown v-else class="w-6 h-6 text-secondary hover:text-secondary-dark" />
     </button>
   </div>
 </template>
