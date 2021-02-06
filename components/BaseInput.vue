@@ -91,7 +91,7 @@ export default {
 
           'bg-gray-200': this.disabled,
           'border-gray-400': this.disabled,
-          'text-gray-500': this.disabled,
+          'text-gray-600': this.disabled,
 
           'pr-9': this.icon,
         },
