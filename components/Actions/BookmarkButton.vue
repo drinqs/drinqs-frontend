@@ -27,7 +27,7 @@ export default {
       type: Object,
       default: () => ({
         liked: null,
-        bookmarked: null,
+        bookmarked: false,
       }),
     },
   },
@@ -39,7 +39,7 @@ export default {
   methods: {
     // isBookmarked is either true or false
     async onBookmark() {
-      const bookmarked = this.isBookmarked ? null : true;
+      const bookmarked = !this.isBookmarked;
 
       const { data } = await this.$apolloProvider.defaultClient.mutate({
         mutation: UpdateReviewMutation,

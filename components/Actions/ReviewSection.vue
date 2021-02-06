@@ -42,7 +42,7 @@ export default {
       type: Object,
       default: () => ({
         liked: null,
-        bookmarked: null,
+        bookmarked: false,
       }),
     },
   },
