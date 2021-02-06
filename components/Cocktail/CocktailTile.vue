@@ -45,6 +45,7 @@
 </template>
 
 <script>
+/* eslint-disable func-names */
 export default {
   name: 'CocktailTile',
   props: {
@@ -62,6 +63,21 @@ export default {
   computed: {
     ingredientsList() {
       return this.cocktail.ingredients.map((ingredient) => ingredient.name).join(', ');
+    },
+  },
+  watch: {
+    'review.liked': function () {
+      let action;
+      if (this.review.liked === null) action = 'unset-review';
+      else if (this.review.liked) action = 'like';
+      else action = 'dislike';
+
+      this.$emit('action', { action });
+    },
+    'review.bookmarked': function () {
+      const action = this.review.bookmarked ? 'add-bookmark' : 'remove-bookmark';
+
+      this.$emit('action', { action });
     },
   },
 };
