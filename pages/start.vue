@@ -14,12 +14,11 @@
         class="flex relative h-32 w-full mb-8 rounded-lg cursor-pointer
           transition-all duration-300 ease-in-out
           border-2 border-secondary justify-center items-center
-          bg-white hover:bg-secondary-seethrough
-        "
+          bg-white hover:border-primary hover:text-primary"
         @click="navigate"
       >
         <component :is="link.icon" class="absolute h-20 w-auto right-0 mr-4" />
-        <span class="absolute left-0 ml-4 z-10 text-secondary font-bold text-3xl ">{{ link.text }}</span>
+        <span class="absolute left-0 ml-4 font-bold text-3xl ">{{ link.text }}</span>
       </div>
     </NuxtLink>
   </div>

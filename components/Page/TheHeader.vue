@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-secondary-light">
+  <nav class="bg-secondary">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div
@@ -9,9 +9,9 @@
           <!-- Mobile menu button-->
           <button
             type="button"
-            class="inline-flex items-center justify-center p-2 rounded-md text-secondary
-              hover:text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset
-              focus:ring-secondary"
+            class="inline-flex items-center justify-center p-2 rounded-md text-primary
+              hover:text-primary-dark focus:outline-none focus:ring-2 focus:ring-inset
+              focus:ring-primary"
             :aria-expanded="showMobileMenu"
             @click="showMobileMenu = !showMobileMenu"
           >
@@ -32,7 +32,7 @@
             <NuxtLink to="/">
               <img
                 class="h-8 w-auto"
-                src="~/assets/images/logo.svg"
+                src="~/assets/images/logo-white.svg"
                 alt="Drinqs"
               >
             </NuxtLink>
@@ -64,7 +64,7 @@
         <NuxtLink
           v-show="!$auth.loggedIn"
           to="/login"
-          class="font-semibold no-underline hover:underline text-secondary p-2"
+          class="font-semibold no-underline hover:underline text-primary p-2"
         >
           Login
         </NuxtLink>
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div v-show="showMobileMenu">
+    <div v-show="showMobileMenu" class="z-10">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <NuxtLink
           v-for="link in navLinks"
@@ -130,10 +130,10 @@ export default {
       return [
         'px-3', 'py-2', 'rounded-md', 'text-sm', 'font-medium', 'cusor-pointer',
         {
-          'text-white': isActive,
-          'bg-secondary': isActive,
-          'text-secondary': !isActive,
-          'hover:text-white': !isActive,
+          'text-primary': isActive,
+          'bg-secondary-lighter': isActive,
+          'text-white': !isActive,
+          'hover:text-primary': !isActive,
           'hover:bg-secondary-lighter': !isActive,
         },
       ];
@@ -142,10 +142,10 @@ export default {
       return [
         'block', 'px-3', 'py-2', 'rounded-md', 'text-base', 'font-medium', 'cusor-pointer',
         {
-          'text-white': isActive,
-          'bg-secondary': isActive,
-          'text-secondary': !isActive,
-          'hover:text-white': !isActive,
+          'text-primary': isActive,
+          'bg-secondary-lighter': isActive,
+          'text-white': !isActive,
+          'hover:text-primary': !isActive,
           'hover:bg-secondary-lighter': !isActive,
         },
       ];

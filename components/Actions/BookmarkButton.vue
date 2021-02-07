@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="cursor-pointer text-primary hover:text-primary-dark mr-2 inline-flex items-center justify-center
+    class="cursor-pointer text-primary hover:text-primary-dark inline-flex items-center justify-center
       focus:outline-none"
     @click.prevent.stop="onBookmark"
   >

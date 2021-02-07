@@ -16,11 +16,10 @@ module.exports = {
   theme: {
     colors: {
       ...require('tailwindcss/colors'),
-      primary: 'rgb(255, 39, 115)',
-      'primary-dark': 'rgb(250, 8, 93)',
+      primary: 'rgb(222, 126, 126)',
+      'primary-dark': 'rgb(217, 95, 104)',
       secondary: 'rgb(43, 30, 112)',
-      'secondary-seethrough': 'rgba(43, 30, 112, 0.2)',
-      'secondary-lighter': 'rgb(104, 88, 121)',
+      'secondary-lighter': 'rgb(54, 37, 141)',
       'secondary-light': 'rgb(179, 171, 188)',
       'secondary-dark': 'rgb(34, 25, 82)',
     },

@@ -9,8 +9,8 @@
         <button
           id="user-menu"
           type="button"
-          class="bg-secondary flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2
-            focus:ring-offset-secondary focus:ring-white"
+          class="bg-primary flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2
+            focus:ring-offset-primary focus:ring-white"
           aria-haspopup="true"
           @click="showUserDropdown = !showUserDropdown"
         >
