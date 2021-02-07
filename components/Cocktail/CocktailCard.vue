@@ -34,10 +34,10 @@
       <div class="p-3 w-full h-1/3">
         <div class="flex items-center mb-6 justify-between">
           <div class="inline-flex items-center">
-            <h1 class="font-bold text-lg text-secondary">
+            <span class="font-bold text-lg text-secondary">
               {{ cocktail.name }}
-            </h1>
-            <Drink v-if="cocktail.alcoholic" class="h-4 w-4 xxs:w-6 xxs:h-6" />
+              <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 xxs:w-6 xxs:h-6" />
+            </span>
           </div>
 
           <div class="inline-flex">
