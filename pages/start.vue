@@ -12,7 +12,7 @@
     >
       <div
         class="flex relative h-32 w-full mb-8 rounded-lg cursor-pointer
-          transition-all duration-300 ease-in-out
+          text-secondary transition-all duration-300 ease-in-out
           border-2 border-secondary justify-center items-center
           bg-white hover:border-primary hover:text-primary"
       >
