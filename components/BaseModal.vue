@@ -13,7 +13,7 @@
           <div
             v-if="show"
             class="absolute inset-0 bg-black opacity-75"
-            @click.stop="$emit('close')"
+            @click.prevent.stop="$emit('close')"
           />
         </div>
       </transition>

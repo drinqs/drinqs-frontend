@@ -6,8 +6,8 @@
     >
       <div class="w-full h-2/3 rounded-md rounded-b-none">
         <NuxtLink
-          v-slot="{ navigate }"
           :to="`/cocktails/${cocktail.slug}`"
+          class="block"
         >
           <img
             v-if="cocktail.thumbnailUrl"

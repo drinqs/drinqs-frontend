@@ -1,12 +1,11 @@
 <template>
   <NuxtLink
-    v-slot="{ navigate }"
     :to="`/cocktails/${cocktail.slug}`"
+    class="block"
   >
     <div
-      class="cocktail-tile shadow-lg rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer"
+      class="cocktail-tile shadow-md rounded-md w-full xs:max-w-xl flex bg-white p-2 relative cursor-pointer"
       :title="cocktail.title"
-      @click.stop="navigate"
     >
       <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
         <img
