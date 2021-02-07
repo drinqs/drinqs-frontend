@@ -87,10 +87,10 @@
       </h2>
 
       <Badge
-        dot-color="bg-pink-400"
-        text-color="text-pink-700"
-        background-color="bg-pink-100"
-        hover-color="hover:bg-pink-500"
+        dot-color="bg-orange-400"
+        text-color="text-orange-700"
+        background-color="bg-orange-100"
+        hover-color="hover:bg-orange-500"
       >
         {{ cocktail.category }}
       </Badge>
