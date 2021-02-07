@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <slot v-show="!imageLoaded" name="pending" />
+    <slot v-if="!imageLoaded" name="pending" />
   </div>
 </template>
 
