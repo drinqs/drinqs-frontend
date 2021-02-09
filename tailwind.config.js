@@ -53,7 +53,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('tailwindcss-children'),
     require('@tailwindcss/forms'),
   ],
 };
