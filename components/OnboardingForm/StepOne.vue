@@ -9,7 +9,7 @@
         <p>
           <span class="text-underline text-primary font-semibold">drinqs.de</span>
           <!-- eslint-disable-next-line max-len -->
-          comes with 3 modes<span class="hidden 2xs:inline">you can use to search your favorite cocktails and discover your personalized recommendations</span>:
+          comes with 3 modes<span class="hidden 2xs:inline"> you can use to search your favorite cocktails and discover your personalized recommendations</span>:
         </p>
       </div>
 
