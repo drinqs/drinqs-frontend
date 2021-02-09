@@ -31,7 +31,6 @@ import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
 export default {
   computed: {
     cocktail: get('drinq-it/cocktail'),
-    nextCocktail: get('drinq-it/nextCocktail'),
     isBackNavigation: get('navigation/isBackNavigation'),
   },
   mounted() {
