@@ -38,6 +38,13 @@
       @action="onAction({ index, ...$event })"
     />
 
+    <div
+      v-show="currentListIsEmpty && !loading"
+      class="font-semibold text-secondary w-full text-center mt-8"
+    >
+      Nothing to see here ...
+    </div>
+
     <Spinner
       v-show="loading"
       class="text-secondary h-12 w-12 mx-auto"
@@ -53,6 +60,7 @@ export default {
     ...get('navigation', ['isBackNavigation']),
     ...get('bookmarks', ['tabs', 'currentTab']),
     loading: get('bookmarks/currentMeta@loading'),
+    currentListIsEmpty: get('bookmarks/currentListIsEmpty'),
     bookmarks: get('bookmarks/cocktails@bookmarks'),
     likedCocktails: get('bookmarks/cocktails@likedCocktails'),
     dislikedCocktails: get('bookmarks/cocktails@dislikedCocktails'),

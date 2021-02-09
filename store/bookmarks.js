@@ -206,4 +206,7 @@ export const getters = {
   currentMeta({ currentTab, meta }) {
     return meta[currentTab.key];
   },
+  currentListIsEmpty({ currentTab, cocktails }) {
+    return cocktails[currentTab.key].length === 0;
+  },
 };
