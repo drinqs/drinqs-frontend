@@ -3,9 +3,9 @@
     <div class="mb-2">
       To get started with <span class="font-medium text-primary">drinqs.de</span>,
       <span class="hidden 2xs:inline">
-        we need a first (voluntarily-given) impression of your taste buds. Choose
+        we need a first impression of your taste buds. Choose
       </span><span class="2xs:hidden">choose</span>
-      at most 6 cocktails you know and like:
+      1-6 cocktails you know and like:
     </div>
 
     <SearchInput class="mb-2" />
@@ -76,6 +76,9 @@ export default {
       if (error) {
         this.$notification.error(error);
       }
+    },
+    chosenCocktails() {
+      this.$emit('cocktail-choice', { choices: this.chosenCocktails.length });
     },
   },
   mounted() {

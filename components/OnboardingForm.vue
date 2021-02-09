@@ -3,7 +3,11 @@
     <div :style="{ height: 'calc(75vh - 5rem)' }">
       <StepOne v-show="step === 1" />
       <StepTwo v-show="step === 2" />
-      <StepThree v-show="step === 3" :initial-chosen-cocktails="initialChosenCocktails" />
+      <StepThree
+        v-show="step === 3"
+        :initial-chosen-cocktails="initialChosenCocktails"
+        @cocktail-choice="onCocktailChoice"
+      />
     </div>
 
     <div class="w-full flex items-center justify-between px-4 mb-10">
@@ -37,6 +41,7 @@
       <button
         type="button"
         class="button button-primary w-28"
+        :disabled="finalStep && !completable"
         @click="onNextStep"
       >
         {{ isCompleted ? 'Finish' : 'Next' }}
@@ -53,11 +58,15 @@ export default {
     return {
       step: 1,
       maxSteps: 3,
+      completable: false,
       initialChosenCocktails: [],
     };
   },
   computed: {
     isCompleted() {
+      return this.step === this.maxSteps;
+    },
+    finalStep() {
       return this.step === this.maxSteps;
     },
   },
@@ -76,6 +85,10 @@ export default {
       if (this.step > 1) {
         this.step -= 1;
       }
+    },
+
+    onCocktailChoice({ choices }) {
+      this.completable = choices >= 1;
     },
 
     async $_loadBookmarkedCocktails() {
