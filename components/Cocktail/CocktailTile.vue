@@ -26,7 +26,7 @@
           <span class="cocktail-tile--heading font-bold text-base xs:text-lg text-secondary truncate">
             {{ cocktail.name }}
           </span>
-          <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 xxs:w-6 xxs:h-6" />
+          <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 3xs:w-6 3xs:h-6" />
         </div>
 
         <div class="text-base truncate text-secondary mb-3">

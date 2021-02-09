@@ -1,9 +1,11 @@
 <template>
-  <div class="h-full w-full pb-2 flex flex-col text-sm sm:text-base">
+  <div class="h-full w-full pb-2 flex flex-col text-sm xs:text-base">
     <div class="mb-2">
       To get started with <span class="font-medium text-primary">drinqs.de</span>,
-      we need a first (voluntarily-given) impression of your taste buds.
-      Choose at most 6 cocktails you know and like:
+      <span class="hidden 2xs:inline">
+        we need a first (voluntarily-given) impression of your taste buds. Choose
+      </span><span class="2xs:hidden">choose</span>
+      at most 6 cocktails you know and like:
     </div>
 
     <SearchInput class="mb-2" />
@@ -14,10 +16,10 @@
         text-color="text-orange-700"
         background-color="bg-orange-100"
         removable
-        class="mr-1 mb-1"
+        class="max-w-20 2xs:max-w-24 sm:max-w-none mr-1 mb-1"
         @remove="onRemove(index)"
       >
-        {{ cocktail.name }}
+        <span class="truncate">{{ cocktail.name }}</span>
       </Badge>
     </div>
 

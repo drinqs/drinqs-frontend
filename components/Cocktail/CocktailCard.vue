@@ -36,7 +36,7 @@
           <div class="inline-flex items-center">
             <span class="font-bold text-lg text-secondary">
               {{ cocktail.name }}
-              <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 xxs:w-6 xxs:h-6" />
+              <Drink v-if="cocktail.alcoholic" class="inline h-4 w-4 3xs:w-6 3xs:h-6" />
             </span>
           </div>
 

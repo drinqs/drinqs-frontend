@@ -5,7 +5,7 @@
     :title="cocktail.title"
     @click.prevent.stop="$emit('click')"
   >
-    <div class="w-20 h-20 min-w-20 xs:w-24 xs:h-24 xs:min-w-24 p-1 flex items-center">
+    <div class="w-16 h-16 min-w-16 2xs:w-20 2xs:h-20 2xs:min-w-20 xs:w-24 xs:h-24 xs:min-w-24 p-1 flex items-center">
       <img
         v-if="cocktail.thumbnailUrl"
         :src="cocktail.thumbnailUrl"
@@ -25,12 +25,12 @@
       </span>
 
       <div class="flex items-center mb-1">
-        <span class="cocktail-tile--heading font-bold text-base xs:text-lg text-secondary truncate">
+        <span class="cocktail-tile--heading font-bold text-sm 2xs:text-base xs:text-lg text-secondary truncate">
           {{ cocktail.name }}
         </span>
       </div>
 
-      <div class="text-base truncate text-secondary mb-3">
+      <div class="text-sm xs:text-base truncate text-secondary mb-3">
         {{ ingredientsList }}
       </div>
     </div>
