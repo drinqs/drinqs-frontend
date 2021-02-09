@@ -26,7 +26,6 @@ export const actions = {
     const { data } = await client.query({
       query: RecommendedCocktailsQuery,
       variables: {
-        searchTerm: getters.searchTerm,
         first: 20,
         after: getters.after,
       },
