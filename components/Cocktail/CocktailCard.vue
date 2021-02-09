@@ -15,17 +15,14 @@
             :alt="cocktail.name"
             class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
             @load="imageLoaded = true"
-            @click.stop="navigate"
           >
           <div
             v-else
             :style="{ 'aspect-ratio': 1 }"
             class="align-middle"
-            @click.stop="navigate"
           >
             <BeerCelebration
               class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
-              @click.stop="navigate"
             />
           </div>
         </NuxtLink>
