@@ -78,7 +78,7 @@ export default {
   computed: {
     inputCssClasses() {
       return [
-        'block', 'w-full', 'px-3', 'sm:text-sm', 'rounded-md',
+        'block', 'w-full', 'px-3', 'text-sm', 'sm:text-base', 'rounded-md',
         {
           'border-red-500': this.error,
           'focus:border-red-700': this.error,
