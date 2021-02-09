@@ -93,11 +93,12 @@ export default {
       const cocktailIndex = this.chosenCocktails.findIndex((c) => c.slug === cocktail.slug);
       if (cocktailIndex !== -1) {
         this.onRemove(cocktailIndex);
+        this.$_updateBookmark({ cocktail, bookmarked: false });
       } else if (this.chosenCocktails.length === MAX_CHOICES) {
         this.$notification.warning('You can only choose up to 6 cocktails.');
       } else {
         this.chosenCocktails.push(cocktail);
-        this.$_toggleBookmark(cocktail);
+        this.$_updateBookmark({ cocktail, bookmarked: true });
       }
     },
     onRemove(cocktailIndex) {
@@ -107,15 +108,13 @@ export default {
         this.chosenCocktails.splice(cocktailIndex, 1);
       }
     },
-    async $_toggleBookmark(cocktail) {
-      const isBookmarked = this.isChosen(cocktail);
-
+    async $_updateBookmark({ cocktail, bookmarked }) {
       await this.$apolloProvider.defaultClient.mutate({
         mutation: UpdateReviewMutation,
         variables: {
           cocktailId: cocktail.id,
           liked: cocktail.review?.liked,
-          bookmarked: !isBookmarked,
+          bookmarked,
         },
       });
     },
