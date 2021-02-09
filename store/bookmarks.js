@@ -95,7 +95,7 @@ export const mutations = {
     cocktails.likedCocktails.splice(likeIndex, 1);
   },
   REMOVE_DISLIKED_COCKTAIL({ cocktails }, dislikeIndex) {
-    cocktails.likedCocktails.splice(dislikeIndex, 1);
+    cocktails.dislikedCocktails.splice(dislikeIndex, 1);
   },
 };
 
