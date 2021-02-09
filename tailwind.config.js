@@ -52,6 +52,9 @@ module.exports = {
       width: {
         fit: 'fit-content',
       },
+      height: {
+        fit: 'fit-content',
+      },
     },
   },
   variants: {

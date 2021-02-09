@@ -99,7 +99,7 @@ export default {
     async onLogout() {
       await this.$auth.logout();
 
-      this.setFlashMessage({
+      this.$notification.open({
         type: 'success',
         message: 'Logged out successfully',
       });
