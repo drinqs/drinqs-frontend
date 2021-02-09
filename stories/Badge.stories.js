@@ -12,6 +12,9 @@ export default {
     withHover: {
       type: 'boolean',
     },
+    removable: {
+      type: 'boolean',
+    },
     color: {
       control: {
         type: 'select',
@@ -37,8 +40,7 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   computed: {
     dotColor() {
-      if (this.withDot) return `bg-${this.color}-400`;
-      return '';
+      return `bg-${this.color}-400`;
     },
     backgroundColor() {
       return `bg-${this.color}-100`;
@@ -57,6 +59,8 @@ const Template = (args, { argTypes }) => ({
       :background-color="backgroundColor"
       :hover-color="hoverColor"
       :text-color="textColor"
+      :with-dot="withDot"
+      :removable="removable"
     >
       {{ text }}
     </Badge>
@@ -69,6 +73,7 @@ Teal.args = {
   withDot: true,
   withHover: true,
   color: 'teal',
+  removable: true,
 };
 
 export const Gray = Template.bind({});
@@ -77,6 +82,7 @@ Gray.args = {
   withDot: true,
   withHover: true,
   color: 'gray',
+  removable: true,
 };
 
 export const Yellow = Template.bind({});
@@ -85,6 +91,7 @@ Yellow.args = {
   withDot: true,
   withHover: true,
   color: 'yellow',
+  removable: true,
 };
 
 export const Orange = Template.bind({});
@@ -93,6 +100,7 @@ Orange.args = {
   withDot: true,
   withHover: true,
   color: 'orange',
+  removable: true,
 };
 
 export const Red = Template.bind({});
@@ -101,6 +109,7 @@ Red.args = {
   withDot: true,
   withHover: true,
   color: 'red',
+  removable: true,
 };
 
 export const Green = Template.bind({});
@@ -109,6 +118,7 @@ Green.args = {
   withDot: true,
   withHover: true,
   color: 'green',
+  removable: true,
 };
 
 export const Blue = Template.bind({});
@@ -117,6 +127,7 @@ Blue.args = {
   withDot: true,
   withHover: true,
   color: 'blue',
+  removable: true,
 };
 
 export const Indigo = Template.bind({});
@@ -125,6 +136,7 @@ Indigo.args = {
   withDot: true,
   withHover: true,
   color: 'indigo',
+  removable: true,
 };
 
 export const Purple = Template.bind({});
@@ -133,6 +145,7 @@ Purple.args = {
   withDot: true,
   withHover: true,
   color: 'purple',
+  removable: true,
 };
 
 export const Pink = Template.bind({});
@@ -141,4 +154,5 @@ Pink.args = {
   withDot: true,
   withHover: true,
   color: 'pink',
+  removable: true,
 };

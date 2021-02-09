@@ -3,8 +3,11 @@
     class="px-4 h-6 rounded-full text-xs font-semibold flex items-center w-fit"
     :class="colorCssClasses"
   >
-    <span v-if="dotColor" class="w-2 h-2 rounded-full mr-1" :class="dotColor" />
+    <span v-if="withDot" class="w-2 h-2 rounded-full mr-1" :class="dotColor" />
     <slot />
+    <span v-if="removable" class="ml-1 cursor-pointer" :class="textColor" @click.stop="onRemove">
+      <X class="w-3 h-3" />
+    </span>
   </div>
 </template>
 
@@ -27,6 +30,14 @@ export default {
       type: String,
       default: '',
     },
+    removable: {
+      type: Boolean,
+      default: false,
+    },
+    withDot: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     colorCssClasses() {
@@ -47,6 +58,11 @@ export default {
       }
 
       return classes;
+    },
+  },
+  methods: {
+    onRemove() {
+      this.$emit('remove');
     },
   },
 };

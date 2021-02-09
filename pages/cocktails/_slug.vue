@@ -91,6 +91,7 @@
         text-color="text-orange-700"
         background-color="bg-orange-100"
         hover-color="hover:bg-orange-500"
+        with-dot
       >
         {{ cocktail.category }}
       </Badge>
