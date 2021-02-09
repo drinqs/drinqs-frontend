@@ -18,7 +18,7 @@
     </CocktailCard>
 
     <Spinner
-      v-else
+      v-if="!cocktail || loading"
       class="text-secondary h-12 w-12 mx-auto mt-48"
     />
   </div>
@@ -26,11 +26,11 @@
 
 <script>
 import { get, call } from 'vuex-pathify';
-import UpdateReviewMutation from '@/graphql/mutations/Review/UpdateReview.gql';
 
 export default {
   computed: {
     cocktail: get('drinq-it/cocktail'),
+    loading: get('drinq-it/loading'),
     isBackNavigation: get('navigation/isBackNavigation'),
   },
   mounted() {
@@ -40,32 +40,15 @@ export default {
     }
   },
   methods: {
-    fetchNextCocktail: call('drinq-it/fetch'),
+    fetchNextCocktail: call('drinq-it/fetchNextCocktail'),
+    review: call('drinq-it/review'),
     reset: call('drinq-it/reset'),
 
-    onAccepted() {
-      this.$apolloProvider.defaultClient.mutate({
-        mutation: UpdateReviewMutation,
-        variables: {
-          cocktailId: this.cocktail.id,
-          bookmarked: this.cocktail.review?.bookmarked,
-          liked: true,
-        },
-      });
-
-      this.fetchNextCocktail();
+    async onAccepted() {
+      this.review({ review: 'liked' });
     },
-    onRejected() {
-      this.$apolloProvider.defaultClient.mutate({
-        mutation: UpdateReviewMutation,
-        variables: {
-          cocktailId: this.cocktail.id,
-          bookmarked: this.cocktail.review?.bookmarked,
-          liked: false,
-        },
-      });
-
-      this.fetchNextCocktail();
+    async onRejected() {
+      this.review({ review: 'disliked' });
     },
   },
 };
