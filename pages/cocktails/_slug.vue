@@ -141,7 +141,7 @@ export default {
       },
     });
 
-    this.review = data.cocktail.review;
+    if (data.cocktail?.review) this.review = data.cocktail.review;
   },
   computed: {
     recipe() {

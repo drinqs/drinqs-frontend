@@ -50,7 +50,10 @@ export default {
         },
       });
 
-      this.$emit('change', data.review.review);
+      this.$emit('change', {
+        liked: data.review.review.liked,
+        bookmarked: data.review.review.bookmarked,
+      });
     },
   },
 };
