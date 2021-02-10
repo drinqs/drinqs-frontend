@@ -97,6 +97,12 @@ export const mutations = {
   REMOVE_DISLIKED_COCKTAIL({ cocktails }, dislikeIndex) {
     cocktails.dislikedCocktails.splice(dislikeIndex, 1);
   },
+
+  SET_REVIEW({ cocktails }, { review, cocktailIndex, tab }) {
+    const cocktail = cocktails[tab][cocktailIndex];
+    if (!cocktail) return;
+    cocktails[tab][cocktailIndex] = { ...cocktail, review };
+  },
 };
 
 export const actions = {
@@ -196,6 +202,23 @@ export const actions = {
 
     TABS.filter((tab) => tab.key !== getters.currentTab.key).forEach((tab) => {
       dispatch('resetTab', tab);
+    });
+  },
+
+  setReview({ commit, getters }, { review, cocktailId }) {
+    TABS.forEach(({ key: tab }) => {
+      const cocktailIndex = getters.cocktails[tab].findIndex((cocktail) => cocktail.id === cocktailId);
+      if (cocktailIndex === -1) return;
+      commit('SET_REVIEW', { cocktailIndex, review, tab });
+      if (review.bookmarked === false && tab === 'bookmarks') {
+        commit('REMOVE_BOOKMARK', cocktailIndex);
+      }
+      if (review.liked !== true && tab === 'likedCocktails') {
+        commit('REMOVE_LIKED_COCKTAIL', cocktailIndex);
+      }
+      if (review.liked !== false && tab === 'dislikedCocktails') {
+        commit('REMOVE_DISLIKED_COCKTAIL', cocktailIndex);
+      }
     });
   },
 };

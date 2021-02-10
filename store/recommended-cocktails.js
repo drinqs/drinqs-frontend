@@ -13,6 +13,13 @@ export const mutations = {
   ADD_COCKTAILS({ cocktails }, furtherCocktails) {
     cocktails.push(...furtherCocktails);
   },
+  SET_REVIEW({ cocktails }, { review, cocktailId }) {
+    const index = cocktails.findIndex((cocktail) => cocktail.id === cocktailId);
+    if (index === -1) return;
+    const cocktail = cocktails[index];
+    // eslint-disable-next-line no-param-reassign
+    cocktails[index] = { ...cocktail, review };
+  },
 };
 
 export const actions = {
@@ -42,6 +49,10 @@ export const actions = {
     commit('SET_HAS_NEXT_PAGE', true);
     commit('SET_AFTER', null);
     commit('SET_COCKTAILS', []);
+  },
+
+  setReview({ commit }, { review, cocktailId }) {
+    commit('SET_REVIEW', { review, cocktailId });
   },
 };
 

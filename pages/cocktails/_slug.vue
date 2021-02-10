@@ -9,7 +9,7 @@
       </h1>
 
       <div class="flex items-center">
-        <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-2" />
+        <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-2" @change="onReviewChange" />
         <ShareButton :cocktail="cocktail" />
       </div>
     </div>
@@ -29,7 +29,7 @@
       />
 
       <div class="absolute right-0 mt-4">
-        <ReviewSection v-model="review" :cocktail-id="cocktail.id" />
+        <ReviewSection v-model="review" :cocktail-id="cocktail.id" @change="onReviewChange" />
       </div>
     </div>
 
@@ -144,6 +144,19 @@ export default {
     onImageLoadError() {
       this.hasThumbnail = false;
       this.thumbnailLoaded = true;
+    },
+    onReviewChange() {
+      if (!['/drinq-it', '/search', '/recommended-cocktails', '/bookmarks'].includes(this.$nuxt.context.from.path)) {
+        return;
+      }
+
+      this.$store.dispatch(
+        `${this.$nuxt.context.from.path.replace(/^\//, '')}/setReview`,
+        {
+          review: this.review,
+          cocktailId: this.cocktail.id,
+        },
+      );
     },
   },
 };

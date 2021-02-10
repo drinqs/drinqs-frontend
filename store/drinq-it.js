@@ -10,6 +10,11 @@ export const state = () => ({
 
 export const mutations = {
   ...make.mutations(state),
+  SET_REVIEW({ cocktail }, { review, cocktailId }) {
+    if (cocktail?.id !== cocktailId) return;
+    // eslint-disable-next-line no-param-reassign
+    cocktail.review = review;
+  },
 };
 
 export const actions = {
@@ -47,6 +52,10 @@ export const actions = {
     });
 
     dispatch('fetchNextCocktail');
+  },
+
+  setReview({ commit }, { review, cocktailId }) {
+    commit('SET_REVIEW', { review, cocktailId });
   },
 
   reset({ commit }) {
