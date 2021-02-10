@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable max-len -->
   <div>
     <h2 class="text-secondary font-semibold mb-2">
       Thanks for signing up!
@@ -6,11 +7,8 @@
 
     <div class="h-full w-full pb-2 flex flex-col text-sm xs:text-base">
       <div class="mb-2">
-        <p>
-          <span class="text-underline text-primary font-semibold">drinqs.de</span>
-          <!-- eslint-disable-next-line max-len -->
-          comes with 3 modes<span class="hidden 2xs:inline"> you can use to search your favorite cocktails and discover your personalized recommendations</span>:
-        </p>
+        <span class="text-underline text-primary font-semibold">drinqs.de</span> comes with 3
+        modes<span class="hidden 2xs:inline"> you can use to search your favorite cocktails and discover your personalized recommendations</span>:
       </div>
 
       <div class="w-full flex-auto overflow-y-scroll">

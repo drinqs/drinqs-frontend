@@ -93,11 +93,9 @@
             </h2>
 
             <div class="mb-2">
-              <p>
-                <span class="text-underline text-primary font-semibold">drinqs.de</span>
-                comes with 3 modes you can use to search your favorite cocktails and
-                discover your personalized recommendations:
-              </p>
+              <span class="text-underline text-primary font-semibold">drinqs.de</span>
+              comes with 3 modes you can use to search your favorite cocktails and
+              discover your personalized recommendations:
             </div>
 
             <div>
