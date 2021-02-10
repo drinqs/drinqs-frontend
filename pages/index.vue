@@ -14,8 +14,8 @@
 
         <div class="sm:text-center lg:text-left">
           <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-            <span class="block">Welcome to <span class="text-primary font-semibold">drinqs</span>!</span>
-            <span class="block text-secondary uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+            <span class="block text-secondary">Welcome to drinqs!</span>
+            <span class="block text-primary uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl">
               The Cocktail Recommender
             </span>
           </h1>
