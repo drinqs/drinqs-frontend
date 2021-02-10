@@ -1,9 +1,5 @@
 <template>
   <div class="max-w-lg mx-auto w-full">
-    <h1 class="text-secondary font-bold text-xl mb-2">
-      Drinq It!
-    </h1>
-
     <CocktailCard
       v-if="cocktail && cocktail.slug"
       :key="cocktail.slug"
