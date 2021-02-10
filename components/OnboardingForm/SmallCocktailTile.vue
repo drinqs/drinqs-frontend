@@ -7,10 +7,11 @@
   >
     <div class="w-16 h-16 min-w-16 2xs:w-20 2xs:h-20 2xs:min-w-20 xs:w-24 xs:h-24 xs:min-w-24 p-1 flex items-center">
       <img
-        v-if="cocktail.thumbnailUrl"
+        v-if="hasThumbnail"
         :src="cocktail.thumbnailUrl"
         :alt="cocktail.name"
         class="max-h-full h-full w-full min-w-full rounded-md object-cover"
+        v-on="thumbnailEventListeners"
       >
 
       <BeerCelebration
@@ -38,8 +39,13 @@
 </template>
 
 <script>
+import hasThumbnail from '@/mixins/has-thumbnail';
+
 export default {
   name: 'SmallCocktailTile',
+  mixins: [
+    hasThumbnail,
+  ],
   props: {
     cocktail: {
       type: Object,

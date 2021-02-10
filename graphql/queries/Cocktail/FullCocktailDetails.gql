@@ -7,6 +7,10 @@ fragment FullCocktailDetails on Cocktail {
   preparation
   thumbnailUrl
   likeRatio
+  review {
+    liked
+    bookmarked
+  }
   glass {
     name
   }

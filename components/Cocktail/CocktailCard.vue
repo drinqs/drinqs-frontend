@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-show="imageLoaded"
+      v-show="thumbnailLoaded"
       class="rounded-md shadow-lg mx-auto"
     >
       <div class="w-full h-2/3 rounded-md rounded-b-none">
@@ -10,11 +10,11 @@
           class="block"
         >
           <img
-            v-if="cocktail.thumbnailUrl"
+            v-if="hasThumbnail"
             :src="cocktail.thumbnailUrl"
             :alt="cocktail.name"
             class="max-h-full h-full w-full min-w-full rounded-md rounded-b-none object-cover"
-            @load="imageLoaded = true"
+            v-on="thumbnailEventListeners"
           >
           <div
             v-else
@@ -69,13 +69,18 @@
       </div>
     </div>
 
-    <slot v-if="!imageLoaded" name="pending" />
+    <slot v-if="!thumbnailLoaded" name="pending" />
   </div>
 </template>
 
 <script>
+import hasThumbnail from '@/mixins/has-thumbnail';
+
 export default {
   name: 'CocktailCard',
+  mixins: [
+    hasThumbnail,
+  ],
   props: {
     cocktail: {
       type: Object,
@@ -84,7 +89,6 @@ export default {
   },
   data() {
     return {
-      imageLoaded: !this.cocktail.thumbnailUrl,
       review: this.cocktail.review,
     };
   },

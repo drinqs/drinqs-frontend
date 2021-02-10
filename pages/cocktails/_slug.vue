@@ -16,10 +16,11 @@
 
     <div class="relative w-full rounded-md mb-4">
       <img
-        v-if="cocktail.thumbnailUrl"
+        v-if="hasThumbnail"
         :src="cocktail.thumbnailUrl"
         :alt="cocktail.name"
         class="max-h-full h-full w-full min-w-full rounded-md object-cover"
+        v-on="thumbnailEventListeners"
       >
 
       <BeerCelebration
@@ -101,16 +102,9 @@
 
 <script>
 import FindCocktailQuery from '@/graphql/queries/Cocktail/FindCocktail.gql';
-import GetReviewQuery from '@/graphql/queries/Cocktail/GetReview.gql';
 
 export default {
-  async asyncData({ app, params, payload }) {
-    if (payload) {
-      return {
-        cocktail: payload.cocktail,
-      };
-    }
-
+  async asyncData({ app, params }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: FindCocktailQuery,
       variables: {
@@ -120,28 +114,15 @@ export default {
 
     return {
       cocktail: data.cocktail,
+      review: data.cocktail.review,
+      hasThumbnail: !!data.cocktail.thumbnailUrl,
+      thumbnailLoaded: !data.cocktail.thumbnailUrl,
     };
   },
   data() {
     return {
       showShareModal: false,
-      review: {
-        liked: null,
-        bookmarked: false,
-      },
     };
-  },
-  async fetch() {
-    const { params } = this.$nuxt.context;
-
-    const { data } = await this.$apolloProvider.defaultClient.query({
-      query: GetReviewQuery,
-      variables: {
-        cocktailSlug: params.slug,
-      },
-    });
-
-    if (data.cocktail?.review) this.review = data.cocktail.review;
   },
   computed: {
     recipe() {
@@ -150,6 +131,19 @@ export default {
         measurement: cocktailIngredient.measurement,
         name: cocktailIngredient.ingredient.name,
       }));
+    },
+
+    thumbnailEventListeners() {
+      return {
+        load: () => { this.thumbnailLoaded = true; },
+        error: this.onImageLoadError,
+      };
+    },
+  },
+  methods: {
+    onImageLoadError() {
+      this.hasThumbnail = false;
+      this.thumbnailLoaded = true;
     },
   },
 };

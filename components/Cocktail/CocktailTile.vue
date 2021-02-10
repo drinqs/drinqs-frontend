@@ -9,10 +9,11 @@
     >
       <div class="w-28 h-28 min-w-28 xs:w-32 xs:h-32 xs:min-w-32 p-1 flex items-center">
         <img
-          v-if="cocktail.thumbnailUrl"
+          v-if="hasThumbnail"
           :src="cocktail.thumbnailUrl"
           :alt="cocktail.name"
           class="max-h-full h-full w-full min-w-full rounded-md object-cover"
+          v-on="thumbnailEventListeners"
         >
 
         <BeerCelebration
@@ -44,9 +45,14 @@
 </template>
 
 <script>
+import hasThumbnail from '@/mixins/has-thumbnail';
+
 /* eslint-disable func-names */
 export default {
   name: 'CocktailTile',
+  mixins: [
+    hasThumbnail,
+  ],
   props: {
     cocktail: {
       type: Object,
