@@ -15,8 +15,9 @@ import CompleteOnboardingMutation from '@/graphql/mutations/User/CompleteOnboard
 export default {
   middleware({ $auth, redirect, store }) {
     if ($auth.user?.isOnboarded) {
-      store.dispatch('navigation/setRedirectToOnboarding', false);
-      redirect('/start');
+      const path = store.getters['navigation/redirectPath'] || '/start';
+      store.dispatch('navigation/consumeRedirectPath');
+      redirect(path);
     }
   },
   computed: {
@@ -24,14 +25,16 @@ export default {
   },
   methods: {
     setFlashMessage: call('flash/setFlashMessage'),
+
     redirect() {
       const path = this.redirectPath || '/start';
       this.$store.dispatch('navigation/consumeRedirectPath');
       this.$router.replace({ path });
     },
 
-    onComplete() {
-      this.$apolloProvider.defaultClient.mutate({ mutation: CompleteOnboardingMutation });
+    async onComplete() {
+      await this.$apolloProvider.defaultClient.mutate({ mutation: CompleteOnboardingMutation });
+      await this.$auth.fetchUser();
       this.setFlashMessage({
         type: 'info',
         message: 'You are good to go!',

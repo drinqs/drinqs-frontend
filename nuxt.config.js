@@ -137,16 +137,12 @@ export default {
       logout: '/',
       home: '/start',
     },
-    plugins: [
-      '~/plugins/onboarding.js',
-    ],
   },
 
   router: {
     middleware: [
       'auth',
       'sync-authentication',
-      'redirect-to-onboarding',
     ],
   },
 

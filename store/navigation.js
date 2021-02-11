@@ -3,7 +3,6 @@ import { make } from 'vuex-pathify';
 export const state = () => ({
   isBackNavigation: false,
   redirectPath: null,
-  redirectToOnboarding: false,
 });
 
 export const mutations = {

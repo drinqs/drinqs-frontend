@@ -56,6 +56,7 @@
 import { get, call } from 'vuex-pathify';
 
 export default {
+  middleware: 'redirect-to-onboarding',
   computed: {
     ...get('navigation', ['isBackNavigation']),
     ...get('bookmarks', ['tabs', 'currentTab']),

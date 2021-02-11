@@ -22,6 +22,7 @@
 import { get, call } from 'vuex-pathify';
 
 export default {
+  middleware: 'redirect-to-onboarding',
   computed: {
     loading: get('recommended-cocktails/loading'),
     cocktails: get('recommended-cocktails/cocktails'),
