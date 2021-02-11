@@ -84,6 +84,7 @@ export default {
   mounted() {
     this.resetSearch();
     this.performSearch();
+    this.$emit('cocktail-choice', { choices: this.chosenCocktails.length });
   },
   methods: {
     performSearch: call('search/performSearch'),
