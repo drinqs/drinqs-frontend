@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full" :style="{ height: '75vh' }">
-    <div :style="{ height: 'calc(75vh - 5rem)' }">
+  <div class="w-full" :style="{ height: '70vh' }">
+    <div :style="{ height: 'calc(70vh - 5rem)' }">
       <StepOne v-show="step === 1" />
       <StepTwo v-show="step === 2" />
       <StepThree
