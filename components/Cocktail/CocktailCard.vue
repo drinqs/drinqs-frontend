@@ -38,7 +38,7 @@
           </div>
 
           <div class="inline-flex">
-            <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-2" />
+            <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-2" @change="onReviewChange" />
             <ShareButton :cocktail="cocktail" />
           </div>
         </div>
@@ -103,6 +103,16 @@ export default {
     },
     onReject() {
       this.$emit('reject', this.cocktail);
+    },
+
+    onReviewChange() {
+      this.$store.dispatch(
+        'drinq-it/setReview',
+        {
+          review: this.review,
+          cocktailId: this.cocktail.id,
+        },
+      );
     },
   },
 };

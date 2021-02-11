@@ -35,8 +35,13 @@
         </div>
 
         <div class="flex items-center absolute bottom-0 right-0 mb-3 mr-3">
-          <ReviewSection v-model="review" :cocktail-id="cocktail.id" class="inline-flex mr-8" />
-          <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-8" />
+          <ReviewSection
+            v-model="review"
+            :cocktail-id="cocktail.id"
+            class="inline-flex mr-8"
+            @change="onReviewChange"
+          />
+          <BookmarkButton v-model="review" :cocktail-id="cocktail.id" class="mr-8" @change="onReviewChange" />
           <ShareButton :cocktail="cocktail" />
         </div>
       </div>
@@ -83,6 +88,21 @@ export default {
       const action = this.review.bookmarked ? 'add-bookmark' : 'remove-bookmark';
 
       this.$emit('action', { action });
+    },
+  },
+  methods: {
+    onReviewChange() {
+      if (!['/search', '/recommended-cocktails', '/bookmarks'].includes(this.$nuxt.context.from.path)) {
+        return;
+      }
+
+      this.$store.dispatch(
+        `${this.$nuxt.context.from.path.replace(/^\//, '')}/setReview`,
+        {
+          review: this.review,
+          cocktailId: this.cocktail.id,
+        },
+      );
     },
   },
 };
