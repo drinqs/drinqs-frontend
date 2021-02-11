@@ -92,12 +92,12 @@ export default {
   },
   methods: {
     onReviewChange() {
-      if (!['/search', '/recommended-cocktails', '/bookmarks'].includes(this.$nuxt.context.from.path)) {
+      if (!['/search', '/recommended-cocktails', '/bookmarks'].includes(this.$route.path)) {
         return;
       }
 
       this.$store.dispatch(
-        `${this.$nuxt.context.from.path.replace(/^\//, '')}/setReview`,
+        `${this.$route.path.replace(/^\//, '')}/setReview`,
         {
           review: this.review,
           cocktailId: this.cocktail.id,
