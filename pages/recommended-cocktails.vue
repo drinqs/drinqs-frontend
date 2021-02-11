@@ -5,8 +5,8 @@
     </h1>
 
     <CocktailTile
-      v-for="cocktail in cocktails"
-      :key="cocktail.slug"
+      v-for="(cocktail, index) in cocktails"
+      :key="`${cocktail.slug}-${index}`"
       :cocktail="cocktail"
       class="mb-8"
     />
