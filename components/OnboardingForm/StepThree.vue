@@ -124,7 +124,7 @@ export default {
 
     onScroll({ target: cocktailList }) {
       // if bottom of container reached
-      if (cocktailList.scrollTop === cocktailList.scrollHeight - cocktailList.offsetHeight) {
+      if (cocktailList.scrollTop === (cocktailList.scrollHeight - cocktailList.offsetHeight) * 0.7) {
         this.performSearch();
       }
     },

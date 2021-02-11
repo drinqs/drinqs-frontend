@@ -101,7 +101,7 @@ export default {
 
     onScroll() {
       // if bottom of page reached
-      if (document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight) {
+      if (document.documentElement.scrollTop + window.innerHeight >= document.documentElement.offsetHeight * 0.67) {
         this.fetch();
       }
     },
