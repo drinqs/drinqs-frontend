@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div
-          v-show="$auth.loggedIn"
+          v-show="userIsReady"
           class="absolute inset-y-0 left-0 flex items-center sm:hidden"
         >
           <!-- Mobile menu button-->
@@ -23,11 +23,11 @@
 
         <div
           class="flex items-center justify-center sm:items-stretch sm:justify-start"
-          :class="{ 'flex-1': $auth.loggedIn, 'pl-2': !$auth.loggedIn }"
+          :class="{ 'flex-1': userIsReady, 'pl-2': !userIsReady }"
         >
           <div
             class="flex items-center"
-            :class="{ 'flex-shrink-0': $auth.loggedIn }"
+            :class="{ 'flex-shrink-0': userIsReady }"
           >
             <NuxtLink to="/">
               <img
@@ -38,7 +38,7 @@
             </NuxtLink>
           </div>
           <div
-            v-show="$auth.loggedIn"
+            v-show="userIsReady"
             class="hidden sm:block sm:ml-6"
           >
             <div class="flex space-x-4">
@@ -119,6 +119,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    userIsReady() {
+      return this.$auth.loggedIn && this.$auth.user?.isOnboarded;
+    },
   },
   watch: {
     $route() {
