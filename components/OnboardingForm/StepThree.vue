@@ -17,7 +17,7 @@
         background-color="bg-orange-100"
         removable
         class="max-w-20 2xs:max-w-24 sm:max-w-none mr-1 mb-1"
-        @remove="onRemove(index)"
+        @remove="onRemove({ cocktailIndex: index, cocktail })"
       >
         <span class="truncate">{{ cocktail.name }}</span>
       </Badge>
@@ -96,8 +96,7 @@ export default {
     addCocktail(cocktail) {
       const cocktailIndex = this.chosenCocktails.findIndex((c) => c.slug === cocktail.slug);
       if (cocktailIndex !== -1) {
-        this.onRemove(cocktailIndex);
-        this.$_updateBookmark({ cocktail, bookmarked: false });
+        this.onRemove({ cocktailIndex, cocktail });
       } else if (this.chosenCocktails.length === MAX_CHOICES) {
         this.$notification.warning('You can only choose up to 6 cocktails.');
       } else {
@@ -105,12 +104,14 @@ export default {
         this.$_updateBookmark({ cocktail, bookmarked: true });
       }
     },
-    onRemove(cocktailIndex) {
+    onRemove({ cocktailIndex, cocktail }) {
       if (this.chosenCocktails.length === 1) {
         this.chosenCocktails.pop();
       } else {
         this.chosenCocktails.splice(cocktailIndex, 1);
       }
+
+      this.$_updateBookmark({ cocktail, bookmarked: false });
     },
     async $_updateBookmark({ cocktail, bookmarked }) {
       await this.$apolloProvider.defaultClient.mutate({
