@@ -55,7 +55,7 @@
           </NuxtLink>
 
           <NuxtLink
-            v-show="$auth.user.isOnboarded"
+            v-show="$auth.user && $auth.user.isOnboarded"
             to="/bookmarks"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             role="menuitem"
