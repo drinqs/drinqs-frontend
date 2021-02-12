@@ -32,7 +32,6 @@ import { get, call } from 'vuex-pathify';
 import { mapActions } from 'vuex';
 
 export default {
-  middleware: 'redirect-to-onboarding',
   computed: {
     loading: get('search/loading'),
     error: get('search/error'),

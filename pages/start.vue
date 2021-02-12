@@ -25,7 +25,6 @@
 
 <script>
 export default {
-  middleware: 'redirect-to-onboarding',
   data() {
     return {
       links: [
